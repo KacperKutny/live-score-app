@@ -1,0 +1,56 @@
+.match-card {
+    display: flex;
+    flex-direction: column;
+    
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #fff;
+   
+  }
+  
+  .match-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px; /* Optional: Space between rows */
+  }
+  
+  .team {
+    display: flex;
+    width: 40%;  /* Make sure the team section takes full width */
+    
+    align-items: center; /* Vertically align flag, name, and score */
+  }
+  
+  .team-flag {
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .team-name {
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 18px;
+  }
+  
+  .team-score {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: auto; /* Push the score to the right side */
+  }
+  
+  .match-status-row {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 10px;
+    width: 100%;
+  }
+  
+  .match-status {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+  }
+  

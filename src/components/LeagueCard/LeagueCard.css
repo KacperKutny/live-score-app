@@ -1,0 +1,29 @@
+/* LeagueCard.module.css */
+.league-card {
+    margin: 5px 100px;
+    padding: 0.5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #d0e2da;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.league-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.league-image {
+    width: 50px; /* Set the width to your desired value */
+    height: 25px; /* Set the height to your desired value */
+    object-fit: contain; /* Ensures the image fits properly without distortion */
+}
+
+.league-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}

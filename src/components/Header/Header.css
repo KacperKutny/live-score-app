@@ -1,0 +1,31 @@
+.header {
+    background-color: #055a30; /* Blue background color */
+    color: white; /* White text color */
+    padding: 44px ;
+    padding-left: 250px;
+    
+    display: flex;
+    align-items: flex-start; /* Vertically align content */
+
+    justify-content: fle; /* Center content horizontally */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    gap: 10px; /* Space between logo and text */
+  }
+  
+  .header-logo {
+    width: 40px; /* Adjust the size of the logo */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: Make the image circular */
+  }
+  
+  .header-title {
+    font-size: 2rem; /* Adjust font size */
+    margin: 0; /* Remove default margin */
+    font-weight: bold;
+    letter-spacing: 1px; /* Optional: spacing for a clean look */
+  }
