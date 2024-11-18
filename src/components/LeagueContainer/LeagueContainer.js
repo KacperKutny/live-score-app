@@ -1,66 +1,88 @@
 import React, { useState, useEffect } from 'react';
-import { groupBy, map } from 'lodash'; // Import lodash methods
 import LeagueCard from '../../components/LeagueCard/LeagueCard';
+import DatePickerComponent from '../DatePicker/DatePickerComponent';
+import NoMatchesMessage from '../NoMatchesMessage/NoMatchesMessage';
+import { fetchLeaguesByDate } from '../../services/footballApi';
 import './LeagueContainer.css';
 
 const LeagueContainer = () => {
-    const [leagues, setLeagues] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [leagues, setLeagues] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [noMatchesMessage, setNoMatchesMessage] = useState("");
 
-    const fetchLeagues = async () => {
-        try {
-            const response = await fetch('https://localhost:7013/api/fixtures/today'); // Your API endpoint
-            if (!response.ok) {
-                throw new Error('Failed to fetch fixtures');
-            }
-            const data = await response.json();
+  const handleDateChange = (date) => {
+    const validDate = new Date(date);
+    setSelectedDate(validDate);
+  };
 
-            // Use lodash groupBy to group matches by league id
-            const leaguesMap = groupBy(data, (match) => match.league.id);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setNoMatchesMessage("");
 
-            // Map over the grouped leagues and structure them
-            const leaguesArray = map(leaguesMap, (matches, leagueId) => {
-                const leagueInfo = matches[0].league; // Assuming all matches in a group have the same league info
-                return {
-                    leagueName: leagueInfo.name,
-                    leagueLogo: leagueInfo.logo,
-                    matches: matches
-                };
-            });
+        const today = new Date();
+        const maxDate = new Date();
+        maxDate.setDate(today.getDate() + 10);
 
-            setLeagues(leaguesArray);
-            setLoading(false);
-        } catch (err) {
-            setError(err.message);
-            setLoading(false);
+        if (selectedDate > maxDate) {
+          setNoMatchesMessage("No matches for this date yet.");
+          setLeagues([]);
+          setLoading(false);
+          return;
         }
+
+        const leaguesArray = await fetchLeaguesByDate(selectedDate);
+
+        if (leaguesArray.length === 0) {
+          setNoMatchesMessage("No matches for this date yet.");
+        }
+
+        setLeagues(leaguesArray);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
     };
 
-    useEffect(() => {
-        fetchLeagues();
-    }, []);
+    fetchData();
+  }, [selectedDate]);
 
-    if (loading) {
-        return <div>Loading leagues...</div>;
-    }
+  if (loading) {
+    return <div>Loading leagues...</div>;
+  }
 
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
-    return (
-        <div className="league-container">
-            {map(leagues, (league, index) => (
-                <LeagueCard
-                    key={index}
-                    leagueName={league.leagueName}
-                    leagueLogo={league.leagueLogo}
-                    matches={league.matches}
-                />
-            ))}
-        </div>
-    );
+  return (
+    <div className="league-container">
+      <div className="date-picker-wrapper">
+        <DatePickerComponent
+          selectedDate={selectedDate}
+          onDateChange={handleDateChange}
+        />
+      </div>
+
+      {noMatchesMessage ? (
+        <NoMatchesMessage message={noMatchesMessage} />
+      ) : (
+        leagues.map((league, index) => (
+          <LeagueCard
+            key={index}
+            leagueName={league.leagueName}
+            leagueLogo={league.leagueLogo}
+            leagueFlag={league.leagueFlag}
+            matches={league.matches}
+          />
+        ))
+      )}
+    </div>
+  );
 };
 
 export default LeagueContainer;

@@ -1,25 +1,25 @@
-export const fetchTodaysMatches = async () => {
-    try{
-        const response = await fetch('https://localhost:7013/api/fixtures/today')
-        
-        if(!response.ok){
-            throw new Error('Failed to fetch data');
-        }
+import { groupBy, map } from 'lodash';
 
-        const data = await response.json();
+// Function to fetch leagues
+export const fetchLeaguesByDate = async (date) => {
+  const formattedDate = new Date(date).toISOString().split('T')[0];
+  const response = await fetch(`https://localhost:7013/api/fixtures?date=${formattedDate}`);
 
-        return data.map(fixture => ({
-            fixture: fixture.fixture,
-            league: fixture.league,
-            teams: fixture.teams,
-            goals: fixture.goals,
-            score: fixture.score
-          }));
+  if (!response.ok) {
+    throw new Error('Failed to fetch fixtures');
+  }
 
+  const data = await response.json();
 
-     } catch(error){
-        console.error('Error fetching data from API: ', error)
-     }
-   
-
-}
+  // Group matches by league
+  const leaguesMap = groupBy(data, (match) => match.league.id);
+  return map(leaguesMap, (matches) => {
+    const leagueInfo = matches[0].league;
+    return {
+      leagueName: leagueInfo.name,
+      leagueLogo: leagueInfo.logo,
+      leagueFlag: leagueInfo.flag,
+      matches: matches,
+    };
+  });
+};

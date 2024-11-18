@@ -2,7 +2,7 @@ import React from 'react';
 import './MatchCard.css';
 
 const formatMatchTime = (date) => {
-    console.log(date);
+  
     const matchDate = new Date(date);  // Create a Date object from the string
     const options = {
       hour: '2-digit',
