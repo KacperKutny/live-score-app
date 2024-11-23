@@ -1,12 +1,20 @@
+// src/App.js
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import react-router-dom
 import MainPage from '../../pages/HomePage';
+import PlayerProfilePage from '../../pages/PlayerProfilePage'; // Import the PlayerProfilePage
 
 function App() {
-    return (
-      <div>
-        <MainPage />
-      </div>
-    );
-  }
-  
-  export default App;
+  return (
+    <Router>
+      <Routes>
+        {/* HomePage Route */}
+        <Route path="/" element={<MainPage />} />
+        {/* Player Profile Page Route */}
+        <Route path="/player/:id" element={<PlayerProfilePage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

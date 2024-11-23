@@ -1,0 +1,36 @@
+.career-table-container {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .career-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .career-table th,
+  .career-table td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .career-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .team-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .team-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+  

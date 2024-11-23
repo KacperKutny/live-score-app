@@ -1,13 +1,36 @@
+// src/components/Header/Header.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for navigation
 import './Header.css';
-import logo from '../../assets/logo.png'; // Adjust the path based on your folder structure
+import logo from '../../assets/logo3.png'; // Adjust the path based on your folder structure
+import searchLogo from '../../assets/searchPlayersLogo2.png'; // Import the search logo
 
-const Header = () => {
+const Header = ({ onSearchClick }) => { // Accept onSearchClick as a prop
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  // Function to handle logo click
+  const handleLogoClick = () => {
+    navigate('/'); // Navigate to the main page ("/")
+  };
+
   return (
     <header className="header">
       <div className="header-content">
-        <img src={logo} alt="Logo" className="header-logo" />
-        <h1 className="header-title">FOOTBALL STATS</h1>
+        {/* Logo with click functionality to navigate to the main page */}
+        <img
+          src={logo}
+          alt="Logo"
+          className="header-logo"
+          onClick={handleLogoClick} // Add onClick to navigate when logo is clicked
+        />
+
+        {/* Search logo acting as a button */}
+        <img
+          src={searchLogo}
+          alt="Search Players"
+          className="search-logo"
+          onClick={onSearchClick} // Trigger the onSearchClick function when clicked
+        />
       </div>
     </header>
   );

@@ -1,0 +1,84 @@
+/* src/components/PlayerProfile/PlayerProfile.css */
+.player-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.player-profile-header {
+  display: flex;
+  justify-content: space-between; /* Pushes the name and team to opposite sides */
+  align-items: center; /* Aligns player info and team vertically */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* This ensures that the player info takes up available space */
+}
+
+.player-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.player-name h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.player-details {
+  width: 100%;
+  display: grid;
+  gap: 15px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.player-detail-item {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.player-detail-item strong {
+  color: #252a30;
+}
+
+/* Team section on the right */
+.player-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.team-info {
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+
+}
+
+

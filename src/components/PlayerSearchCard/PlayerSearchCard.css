@@ -1,0 +1,40 @@
+/* PlayerSearchCard.css */
+.player-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.player-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.player-search-photo {
+  width: 100%;
+  height: auto;
+  max-width: 120px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.player-card-details h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.player-card-details p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.player-card-details p strong {
+  color: #4D8951;
+}

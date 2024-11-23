@@ -1,4 +1,3 @@
-// LeagueCard.js
 import React from 'react';
 import MatchList from '../MatchList/MatchList';
 import './LeagueCard.css';
