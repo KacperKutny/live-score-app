@@ -16,7 +16,7 @@ const PlayerProfile = ({ player, team }) => {
             </div>
             <div className="player-details">
               <div className="player-detail-item">
-                <strong>{player.position} ({team.name})</strong>
+                <strong>{player.position} ({team?.name})</strong>
               </div>
               <div className="player-detail-item">
                 <strong>Age:</strong> {player.age} ({player.birth?.date})
@@ -35,7 +35,7 @@ const PlayerProfile = ({ player, team }) => {
         {team && (
           <div className="player-team">
             <div className="team-info">
-              <img src={team.logo} alt={team.name} className="team-logo" />
+              <img src={team?.logo} alt={team?.name} className="team-logo" />
             
             </div>
           </div>

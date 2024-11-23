@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for navigation
 import './Header.css';
-import logo from '../../assets/logo3.png'; // Adjust the path based on your folder structure
+import logo from '../../assets/MainLogo.png'; // Adjust the path based on your folder structure
 import searchLogo from '../../assets/searchPlayersLogo2.png'; // Import the search logo
 
 const Header = ({ onSearchClick }) => { // Accept onSearchClick as a prop

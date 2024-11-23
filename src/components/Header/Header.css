@@ -19,9 +19,8 @@
 .header-logo {
   width: 250px; /* Adjust the size of the logo */
   height: auto; /* Maintain aspect ratio */
-  padding-left: 400px;
+  padding-left: 400px; /* Added padding for proper alignment */
   cursor: pointer; /* Pointer cursor for the logo */
-
 }
 
 /* Search Logo button */

@@ -45,25 +45,18 @@ const PlayerSearchModal = ({ isOpen, onClose, onPlayerSelect }) => {
   
     try {
       const response = await fetch(`https://localhost:7013/api/players/${player.id}/squads`);
-      if (!response.ok) {
-        throw new Error('Error fetching team data');
-      }
+      if (!response.ok) throw new Error('Error fetching team data');
   
       const data = await response.json();
-      console.log('Team data fetched from API:', data);
-  
-      // Extract team information
       const teamData = data?.[0]?.team || null;
+      setTeam(teamData);
   
-      const playerWithTeam = { ...player, team: teamData };
-      console.log('Player with team:', playerWithTeam); // Debugging
-  
-      onPlayerSelect(playerWithTeam); // Pass player + team data
+      onPlayerSelect({ ...player, team: teamData });
     } catch (error) {
       console.error('Failed to fetch team data:', error);
+    } finally {
+      onClose();
     }
-  
-    onClose();
   };
   
 

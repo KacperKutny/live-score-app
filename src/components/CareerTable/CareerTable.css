@@ -1,36 +1,127 @@
-.career-table-container {
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+Basic reset for margins and padding
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
-  .career-table {
+  /* Container for the table and filter */
+  .career-table-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .career-table-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Filter Section */
+  .filter-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-section label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #555;
+  }
+  
+  .filter-section select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  .filter-section select:hover {
+    border-color: #007bff;
+  }
+  
+  /* Table Styles */
+  table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
   }
   
-  .career-table th,
-  .career-table td {
-    padding: 8px 12px;
+  table th,
+  table td {
+    padding: 12px 15px;
+    text-align: left;
     border: 1px solid #ddd;
-    text-align: center;
+    font-size: 16px;
   }
   
-  .career-table th {
-    background-color: #f4f4f4;
+  table th {
+    background-color: #4D8951;
+    color: white;
     font-weight: bold;
   }
   
-  .team-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  table tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
   }
   
-  .team-logo {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+  table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  table td img {
+    width: 20px;
+    height: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  /* No Data Available */
+  .no-data {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    padding: 20px 0;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+  }
+  
+  /* Responsive Design for smaller screens */
+  @media (max-width: 768px) {
+    table th,
+    table td {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .career-table-container {
+      padding: 10px;
+    }
+  
+    .filter-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .filter-section label {
+      margin-bottom: 8px;
+    }
+  
+    .filter-section select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
   }
   

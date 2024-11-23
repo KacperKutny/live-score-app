@@ -1,36 +1,37 @@
 /* Container styling for the date picker */
 .date-picker-container {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Space between the icon and the input */
-    border: 1px solid #ccc; /* Border around the container */
-    border-radius: 8px; /* Rounded corners */
-    padding: 8px 12px; /* Inner padding */
-    background-color: #f9f9f9; /* Light background for a cleaner look */
-    max-width: 300px; /* Limit the width */
-    margin: 10px auto; /* Center alignment and spacing */
-  }
-  
-  /* Calendar icon styling */
-  .calendar-icon {
-    font-size: 20px; /* Slightly larger size */
-    color: #555; /* Neutral color */
-  }
-  
-  /* Date picker input styling */
-  .date-picker-input {
-    border: none; /* Remove border from input */
-    font-size: 16px; /* Comfortable font size */
-    width: 100%; /* Full width for input */
-    background: none; /* Transparent background */
-    outline: none; /* Remove outline on focus */
-  }
-  
-  /* Date picker container hover and focus states */
-  .date-picker-container:hover {
-    border-color: #888; /* Slightly darker border on hover */
-  }
-  
-  .date-picker-container:focus-within {
-    border-color: #007bff; /* Blue border on focus */
-  }
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between the icon and the input */
+  border: 1px solid #ccc; /* Border around the container */
+  border-radius: 8px; /* Rounded corners */
+  padding: 8px 12px; /* Inner padding */
+  background-color: #f9f9f9; /* Light background for a cleaner look */
+  max-width: 300px; /* Limit the width */
+  margin: 20px auto; /* Center alignment and spacing */
+  z-index: 1001; /* Ensure the date picker appears above other content */
+}
+
+/* Calendar icon styling */
+.calendar-icon {
+  font-size: 20px; /* Slightly larger size */
+  color: #555; /* Neutral color */
+}
+
+/* Date picker input styling */
+.date-picker-input {
+  border: none; /* Remove border from input */
+  font-size: 16px; /* Comfortable font size */
+  width: 100%; /* Full width for input */
+  background: none; /* Transparent background */
+  outline: none; /* Remove outline on focus */
+}
+
+/* Date picker container hover and focus states */
+.date-picker-container:hover {
+  border-color: #888; /* Slightly darker border on hover */
+}
+
+.date-picker-container:focus-within {
+  border-color: #007bff; /* Blue border on focus */
+}
