@@ -1,0 +1,138 @@
+/* General Styling */
+.recent-fixtures-container {
+  padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.recent-fixtures-container h3 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.fixtures-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fixtures-table th,
+.fixtures-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.fixtures-table th {
+  font-weight: bold;
+  color: #fff; /* White text */
+  background-color: #4D8951; /* Green background */
+}
+
+.fixtures-table th:nth-child(1) { 
+  background-color: #4D8951; /* Green for the first column (League) */
+}
+
+.fixtures-table th:nth-child(2) {
+  background-color: #4D8951; /* Green for the second column (Away Team) */
+}
+
+.fixtures-table th:nth-child(3) {
+  background-color: #4D8951; /* Green for the third column (Score) */
+}
+
+.fixtures-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.team-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.score {
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  background-color: #ffffff; /* White background */
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.league-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.league-flag,
+.league-logo {
+  width: 24px;
+  height: auto;
+}
+
+.league-info span {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fixtures-table th,
+  .fixtures-table td {
+    padding: 8px;
+  }
+
+  .team-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .league-flag,
+  .league-logo {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.load-more-btn {
+  display: block;
+  margin: 20px auto; /* Centers the button horizontally */
+  padding: 12px 25px; /* Adds padding for a larger clickable area */
+  background: linear-gradient(135deg, #4D8951, #4D8951); /* Gradient background */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px; /* Rounded corners for a modern look */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+.load-more-btn:hover {
+  background: linear-gradient(135deg, #4D8951, #4D8951); /* Reverse the gradient on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increase shadow intensity on hover */
+}
+
+.load-more-btn:focus {
+  outline: none; /* Remove default outline when focused */
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.4); /* Add focus outline with a blue glow */
+}
+
+.bold {
+  font-weight: bold;  /* Make the font weight thicker for the winner */
+}

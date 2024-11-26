@@ -1,0 +1,79 @@
+.transfers-table {
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the table horizontally */
+    padding: 10px;
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.transfers-table h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.transfers-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+}
+
+.transfers-table th,
+.transfers-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+}
+
+.transfers-table th {
+    background-color: #4D8951;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.transfers-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.transfers-table tr:hover {
+    background-color: #e0f7fa;
+}
+
+.team-logo {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.team-name {
+    display: flex;
+    align-items: center;
+}
+
+.load-more-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more-btn:hover {
+    background-color: #45a049;
+}

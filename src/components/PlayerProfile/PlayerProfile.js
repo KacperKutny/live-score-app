@@ -1,6 +1,6 @@
-
 import React from 'react';
 import './PlayerProfile.css';
+import logoRetired from '../../assets/logo-retired.png';
 
 const PlayerProfile = ({ player, team }) => {
   if (!player) return <p>No player selected.</p>;
@@ -16,7 +16,7 @@ const PlayerProfile = ({ player, team }) => {
             </div>
             <div className="player-details">
               <div className="player-detail-item">
-                <strong>{player.position} ({team?.name})</strong>
+                <strong>{player.position} ({team ? team.name : "RETIRED"})</strong>
               </div>
               <div className="player-detail-item">
                 <strong>Age:</strong> {player.age} ({player.birth?.date})
@@ -32,18 +32,18 @@ const PlayerProfile = ({ player, team }) => {
         </div>
 
         {/* Display team details */}
-        {team && (
-          <div className="player-team">
-            <div className="team-info">
-              <img src={team?.logo} alt={team?.name} className="team-logo" />
-            
-            </div>
+        <div className="player-team">
+          <div className="team-info">
+            <img 
+              src={team ? team.logo : logoRetired} 
+              alt={team ? team.name : "RETIRED"} 
+              className="player-team-logo" 
+            />
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
 };
 
 export default PlayerProfile;
-
