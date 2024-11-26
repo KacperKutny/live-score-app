@@ -1,0 +1,92 @@
+/* src/components/FinishedMatchesResults/FinishedMatchesResults.css */
+
+/* General Styling */
+.finished-fixtures-container {
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .finished-fixtures-container h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .fixtures-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .fixtures-table th,
+  .fixtures-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+  }
+  
+  .fixtures-table th {
+    font-weight: bold;
+    color: #fff;
+    background-color: #4D8951;
+  }
+  
+  .fixtures-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .team-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .team-logo {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .score {
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  /* Styling for match status and score */
+  .match-status {
+    font-weight: bold;
+    color: #888;
+    background-color: #f4f4f4;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .match-status.finished {
+    color: green;
+  }
+  
+  .match-status.tbd {
+    color: red;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .fixtures-table th,
+    .fixtures-table td {
+      padding: 8px;
+    }
+  
+    .team-logo {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  

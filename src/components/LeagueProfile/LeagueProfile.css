@@ -1,0 +1,63 @@
+/* src/components/LeagueProfile/LeagueProfile.css */
+.league-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .league-profile-header {
+    display: flex;
+    justify-content: space-between; /* Pushes the league name and country to opposite sides */
+    align-items: center; /* Aligns league info and country vertically */
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .league-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* This ensures that the league info takes up available space */
+  }
+  
+  .league-profile-logo {
+    width: 100px; /* Adjust logo size */
+    height: 100px;
+    object-fit: contain;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+  
+  .league-name h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+  
+  .country-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .country-flag {
+    width: 40px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .country-info p {
+    font-size: 1.1rem;
+    color: #444;
+    margin: 0;
+  }
+  
+  .country-info strong {
+    color: #252a30;
+  }
+  

@@ -1,16 +1,26 @@
 // src/components/LeagueSearchCard/LeagueSearchCard.js
 import React from 'react';
-import './LeagueSearchCard.css'; // Import styles for LeagueSearchCard
+import { useNavigate } from 'react-router-dom';
+import './LeagueSearchCard.css';
 
-const LeagueSearchCard = ({ league, onClick }) => {
+const LeagueSearchCard = ({ league }) => {
+  const navigate = useNavigate();
+
+  // Handle card click to navigate to league profile
+  const handleCardClick = () => {
+    console.log(`Navigating to /league/${league.league.id}`); // Debugging log
+    navigate(`/league/${league.league.id}`); // Navigate to the LeagueProfilePage
+  };
+
   return (
-    <div className="league-card" onClick={onClick}>
-      <img src={league.logo} alt={league.name} className="league-search-photo" />
-      <div className="league-card-details">
-        <h3>{league.name}</h3>
-        <p><strong>Country:</strong> {league.country || 'N/A'}</p>
-        <p><strong>Type:</strong> {league.type || 'N/A'}</p>
-        <p><strong>Year Founded:</strong> {league.founded || 'N/A'}</p>
+    <div className="league-search-card" onClick={handleCardClick}>
+      <img src={league.league.logo} alt={league.league.name} className="league-search-logo" />
+      <div className="league-search-details">
+        <h3 className="league-search-name">{league.league.name}</h3>
+        <div className="country-search-info">
+          <img src={league.country.flag} alt={league.country.name} className="country-search-flag" />
+          <p className="country-search-name">{league.country.name}</p>
+        </div>
       </div>
     </div>
   );

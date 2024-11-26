@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import LeagueSearchCard from '../LeagueSearchCard/LeagueSearchCard';
 import './LeagueSearchModal.css';
 
-const LeagueSearchModal = ({ isOpen, onClose, onLeagueSelect }) => {
+const LeagueSearchModal = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,18 +37,15 @@ const LeagueSearchModal = ({ isOpen, onClose, onLeagueSelect }) => {
     }
   };
 
-  const handleLeagueCardClick = (league) => {
-    onLeagueSelect(league); // Pass the selected league to the parent component
-    onClose(); // Close the modal after selection
-  };
-
   if (!isOpen) return null;
 
   return (
     <div className="modal-backdrop">
       <div className="modal-content">
         <h2>Search Leagues</h2>
-        <button onClick={onClose} className="close-button">Close</button>
+        <button onClick={onClose} className="close-button">
+          Close
+        </button>
 
         <form onSubmit={handleSearchSubmit}>
           <input
@@ -58,7 +55,9 @@ const LeagueSearchModal = ({ isOpen, onClose, onLeagueSelect }) => {
             placeholder="Enter league name"
             className="search-input"
           />
-          <button type="submit" className="search-button">Search</button>
+          <button type="submit" className="search-button">
+            Search
+          </button>
         </form>
 
         {loading && <p>Loading...</p>}
@@ -67,11 +66,7 @@ const LeagueSearchModal = ({ isOpen, onClose, onLeagueSelect }) => {
         <div className="search-results">
           {searchResults.length > 0 ? (
             searchResults.map((league) => (
-              <LeagueSearchCard
-                key={league.id}
-                league={league}
-                onClick={() => handleLeagueCardClick(league)}
-              />
+              <LeagueSearchCard key={league.league.id} league={league} />
             ))
           ) : (
             <p>No leagues found.</p>

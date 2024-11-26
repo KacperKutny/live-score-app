@@ -5,7 +5,7 @@ import './Header.css';
 import logo from '../../assets/MainLogo.png'; // Adjust the path based on your folder structure
 import searchLogo from '../../assets/searchPlayersLogo2.png'; // Import the search logo
 
-const Header = ({ onSearchClick }) => { // Accept onSearchClick as a prop
+const Header = ({ onSearchClick, onLeagueSearchClick }) => { // Accept onSearchClick as a prop
   const navigate = useNavigate(); // Initialize the navigate function
 
   // Function to handle logo click
@@ -25,12 +25,20 @@ const Header = ({ onSearchClick }) => { // Accept onSearchClick as a prop
         />
 
         {/* Search logo acting as a button */}
-        <img
+        <div className="search-buttons">
+          <img
           src={searchLogo}
           alt="Search Players"
           className="search-logo"
           onClick={onSearchClick} // Trigger the onSearchClick function when clicked
         />
+          <img
+          src={searchLogo}
+          alt="Search Leagues"
+          className="league-search-logo2"
+          onClick={onLeagueSearchClick} // Trigger the onSearchClick function when clicked
+        />
+        </div>
       </div>
     </header>
   );

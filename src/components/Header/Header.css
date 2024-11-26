@@ -3,40 +3,53 @@
   background-color: #4D8951; /* Green background color */
   color: white; /* White text color */
   padding: 22px;
-  padding-left: 50px; /* Adjusted padding for better alignment */
   display: flex;
   align-items: center; /* Vertically center the content */
-  justify-content: space-between; /* Ensure space between logo and the right section */
+  justify-content: space-between; /* Space between logo and search section */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
 
-.header-content {
-  display: flex;
-  align-items: center; /* Vertically center logo and search button */
-  gap: 700px; /* Increased space between the logo and search button */
-}
-
+/* Left Section (Main Logo) */
 .header-logo {
-  width: 250px; /* Adjust the size of the logo */
+  margin-left: 300px;
+  width: 250px; /* Adjust the size of the main logo */
   height: auto; /* Maintain aspect ratio */
-  padding-left: 400px; /* Added padding for proper alignment */
   cursor: pointer; /* Pointer cursor for the logo */
 }
 
-/* Search Logo button */
+/* Right Section (Search Buttons) */
+.header-content {
+  display: flex;
+  align-items: center; /* Vertically center search buttons */
+  gap: 1000px; /* Space between the logo and the search buttons */
+}
+
+.search-buttons {
+  display: flex;
+  align-items: center; /* Vertically center the search buttons */
+  gap: 40px; /* Space between the search buttons themselves */
+}
+
+/* Player Search Logo Styling */
 .search-logo {
   width: 60px; /* Adjust size of search icon */
   height: 60px;
   cursor: pointer; /* Make the search logo clickable */
   transition: transform 0.3s ease; /* Smooth hover transition */
-  margin-right: 50px;
 }
 
 .search-logo:hover {
   transform: scale(1.1); /* Slightly enlarge the image on hover */
 }
 
-/* If you want to add some padding to the whole header-title and logo section */
-.header-title {
-  display: none; /* Removed for now, since you only want the logo */
+/* League Search Logo Styling */
+.league-search-logo2 {
+  width: 60px; /* Same size as player search logo */
+  height: 60px;
+  cursor: pointer; /* Make the league search logo clickable */
+  transition: transform 0.3s ease; /* Smooth hover transition */
+}
+
+.league-search-logo:hover {
+  transform: scale(1.1); /* Slightly enlarge the image on hover */
 }
