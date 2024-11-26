@@ -1,103 +1,158 @@
 /* General Styling */
 .standings {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  }
-  
-  .standings h2 {
-    text-align: center;
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .league-standings {
-    margin-bottom: 40px;
-  }
-  
-  .standings-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.standings h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.standings-table th {
+  font-weight: bold;
+  color: #fff;
+  background-color: #4D8951;
+}
+
+.standings-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.team-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Button Styling */
+button {
+  padding: 10px 20px;
+  background-color: #4D8951;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #3d7141;
+  transform: scale(1.05); /* Slight scaling effect for hover */
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Season Filter Styling */
+label {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333;
+}
+
+select {
+  padding: 8px 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:hover,
+select:focus {
+  border-color: #4D8951;
+  box-shadow: 0 0 5px rgba(77, 137, 81, 0.5);
+}
+
+.form {
+  display: flex;
+  gap: 2px;
+}
+
+/* Styling for the colored squares inside the form column */
+.win,
+.loss,
+.draw {
+  display: inline-block;
+  width: 24px;
+  height: 22px;
+  text-align: center;
+  line-height: 18px; /* Adjust to center the text inside the square */
+  font-weight: bold;
+  border-radius: 4px;
+  color: white;
+}
+
+.win {
+  background-color: green;
+}
+
+.loss {
+  background-color: red;
+}
+
+.draw {
+  background-color: orange;
+}
+
+/* Remove underline and blue color from hyperlinks */
+.standings-table .team-link {
+  text-decoration: none;  /* Remove underline */
+  color: black;         /* Inherit the color from surrounding text */
+  display: inline-flex;
+  align-items: center;    /* Center align the text with the image */
+}
+
+/* Optional: Add hover effect for the team name links */
+.standings-table .team-link:hover {
+  color: #4d8951; /* Change to a custom color on hover */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .standings-table th,
   .standings-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    vertical-align: middle;
+    padding: 8px;
   }
-  
-  .standings-table th {
-    font-weight: bold;
-    color: #fff;
-    background-color: #4D8951;
-  }
-  
-  .standings-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
+
   .team-logo {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+    width: 20px;
+    height: 20px;
   }
-  
-  form td,
-  form th {
-    padding-left: 20px;
+
+  button {
+    width: 100%;
+    font-size: 18px;
   }
-  
-  form th {
-    text-align: left;
+
+  select {
+    width: 100%;
+    font-size: 16px;
   }
-  
-  .form {
-    display: flex;
-    gap: 2px;
-  }
-  
-  /* Styling for the colored squares inside the form column */
-  .win,
-  .loss,
-  .draw {
-    display: inline-block;
-    width: 24px;
-    height: 22px;
-    text-align: center;
-    line-height: 18px; /* Adjust to center the text inside the square */
-    font-weight: bold;
-    border-radius: 4px;
-    color: white;
-  }
-  
-  .win {
-    background-color: green;
-  }
-  
-  .loss {
-    background-color: red;
-  }
-  
-  .draw {
-    background-color: orange;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .standings-table th,
-    .standings-table td {
-      padding: 8px;
-    }
-  
-    .team-logo {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  
+}

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Standings.css';
+import TopScorersTable from '../TopScorersTable/TopScorersTable'; // Import the TopScorersTable component
 
 const Standings = ({ leagueId }) => {
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [standings, setStandings] = useState([]);
+  const [showTopScorers, setShowTopScorers] = useState(false); // State to toggle between tables
 
   // Fetch available seasons
   useEffect(() => {
@@ -49,6 +51,10 @@ const Standings = ({ leagueId }) => {
     setSelectedSeason(Number(e.target.value));
   };
 
+  const toggleView = () => {
+    setShowTopScorers((prev) => !prev);
+  };
+
   return (
     <div className="standings">
       <h2>Standings</h2>
@@ -65,56 +71,67 @@ const Standings = ({ leagueId }) => {
         </select>
       </div>
 
-      {standings.length > 0 ? (
-        <table className="standings-table">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Team</th>
-              <th>Matches Played</th>
-              <th>Wins</th>
-              <th>Draws</th>
-              <th>Losses</th>
-              <th>Points</th>
-              <th>Goals</th>
-              <th>Form</th>
-            </tr>
-          </thead>
-          <tbody>
-            {standings.map((team) => (
-              <tr key={team.team.id}>
-                <td>{team.rank}</td>
-                <td>
-                  <img src={team.team.logo} alt={team.team.name} className="team-logo" />
-                  {team.team.name}
-                </td>
-                <td>{team.all.played}</td>
-                <td>{team.all.win}</td>
-                <td>{team.all.draw}</td>
-                <td>{team.all.lose}</td>
-                <td>{team.points}</td>
-                <td>
-                  {team.all.goals.for}:{team.all.goals.against}
-                </td>
-                <td className="form">
-                  {team.form.split("").map((formType, index) => {
-                    if (formType === 'W') {
-                      return <span key={index} className="form-box win">W</span>;
-                    } else if (formType === 'L') {
-                      return <span key={index} className="form-box loss">L</span>;
-                    } else if (formType === 'D') {
-                      return <span key={index} className="form-box draw">D</span>;
-                    } else {
-                      return <span key={index} className="form-box">{formType}</span>;
-                    }
-                  })}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <button onClick={toggleView}>
+        {showTopScorers ? 'Show Standings' : 'Show Top Scorers'}
+      </button>
+
+      {/* Conditional rendering based on showTopScorers state */}
+      {showTopScorers ? (
+        <TopScorersTable leagueId={leagueId} selectedSeason={selectedSeason} />
       ) : (
-        <div>No standings available for season {selectedSeason}.</div>
+        <div>
+          {standings.length > 0 ? (
+            <table className="standings-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                  <th>Matches Played</th>
+                  <th>Wins</th>
+                  <th>Draws</th>
+                  <th>Losses</th>
+                  <th>Points</th>
+                  <th>Goals</th>
+                  <th>Form</th>
+                </tr>
+              </thead>
+              <tbody>
+                {standings.map((team) => (
+                  <tr key={team.team.id}>
+                    <td>{team.rank}</td>
+                    <td>
+                      <img src={team.team.logo} alt={team.team.name} className="team-logo" />
+                      {team.team.name}
+                    </td>
+                    <td>{team.all.played}</td>
+                    <td>{team.all.win}</td>
+                    <td>{team.all.draw}</td>
+                    <td>{team.all.lose}</td>
+                    <td>{team.points}</td>
+                    <td>
+                      {team.all.goals.for}:{team.all.goals.against}
+                    </td>
+                    <td className="form">
+                      {team.form.split("").map((formType, index) => {
+                        if (formType === 'W') {
+                          return <span key={index} className="form-box win">W</span>;
+                        } else if (formType === 'L') {
+                          return <span key={index} className="form-box loss">L</span>;
+                        } else if (formType === 'D') {
+                          return <span key={index} className="form-box draw">D</span>;
+                        } else {
+                          return <span key={index} className="form-box">{formType}</span>;
+                        }
+                      })}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div>No standings available for season {selectedSeason}.</div>
+          )}
+        </div>
       )}
     </div>
   );
