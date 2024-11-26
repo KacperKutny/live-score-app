@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import './RecentFixtures.css';
 
 const RecentFixtures = ({ fixtures }) => {
   const [visibleFixtures, setVisibleFixtures] = useState(6); // Initially show 6 fixtures
   const [loadedFixtures, setLoadedFixtures] = useState(fixtures.slice(0, 6)); // Start with the first 6 fixtures
+  const navigate = useNavigate(); // Initialize the navigate function from react-router-dom
 
   const loadMoreFixtures = () => {
     // Increase the number of fixtures to load
@@ -14,7 +16,7 @@ const RecentFixtures = ({ fixtures }) => {
     setLoadedFixtures(fixtures.slice(0, newVisibleCount));
   };
 
-  if (!fixtures || fixtures.length === 0) return <p></p>;
+  if (!fixtures || fixtures.length === 0) return <p>No fixtures available</p>;
 
   // Sort fixtures by date (most recent first)
   const sortedFixtures = fixtures.sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date));
@@ -27,6 +29,11 @@ const RecentFixtures = ({ fixtures }) => {
       return awayTeamName;
     }
     return null; // In case of a draw, return null
+  };
+
+  const handleLeagueClick = (leagueId) => {
+    // Navigate to the League Profile Page using the leagueId
+    navigate(`/league/${leagueId}`);
   };
 
   return (
@@ -48,18 +55,26 @@ const RecentFixtures = ({ fixtures }) => {
             const homeGoals = fixture.goals.home;
             const awayGoals = fixture.goals.away;
             const winningTeam = getWinningTeam(homeGoals, awayGoals, fixture.teams.home.name, fixture.teams.away.name);
-            
+
             return (
               <tr key={fixture.fixture.id}>
                 {/* Date Column */}
                 <td>{new Date(fixture.fixture.date).toLocaleDateString()}</td>
 
                 {/* League Column */}
-                <td className="league-info">
+                <td className="league-info" onClick={() => handleLeagueClick(fixture.league.id)}>
                   {fixture.league.flag ? (
-                    <img src={fixture.league.flag} alt={fixture.league.name} className="league-flag" />
+                    <img
+                      src={fixture.league.flag}
+                      alt={fixture.league.name}
+                      className="league-flag"
+                    />
                   ) : (
-                    <img src={fixture.league.logo} alt={fixture.league.name} className="league-logo" />
+                    <img
+                      src={fixture.league.logo}
+                      alt={fixture.league.name}
+                      className="league-logo"
+                    />
                   )}
                   {fixture.league.name}
                 </td>

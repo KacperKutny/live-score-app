@@ -3,76 +3,82 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-  }
-  
-  .top-scorers-table th,
-  .top-scorers-table td {
+}
+
+.top-scorers-table th,
+.top-scorers-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
     vertical-align: middle;
-  }
-  
-  .top-scorers-table th {
+}
+
+.top-scorers-table th {
     font-weight: bold;
     background-color: #4D8951;
     color: white;
-  }
-  
-  .top-scorers-table tr:hover {
+}
+
+.top-scorers-table tr:hover {
     background-color: #f1f1f1;
-  }
-  
-  /* Player Photo Styling */
-  .player-photo {
+}
+
+/* Player Photo Styling */
+.player-topscorers-photo {
     width: 40px; /* Make the player photo smaller */
     height: 40px;
     margin-right: 10px;
     object-fit: cover; /* Ensures the photo fits well inside the circle */
-  }
-  
-  /* Team Logo Styling */
-  .team-logo {
+}
+
+/* Team Logo Styling */
+.team-logo {
     width: 25px; /* Adjust team logo size */
     height: 25px;
     margin-right: 10px;
-  }
-  
-  /* Styling for the table body text */
-  .top-scorers-table td {
+}
+
+/* Styling for the table body text */
+.top-scorers-table td {
     font-size: 16px;
-  }
-  
-  /* Styling for Player Name Link */
-  .top-scorers-table .player-link {
+}
+
+/* Styling for Player Name Link */
+.top-scorers-table .player-link {
     text-decoration: none;  /* Remove underline */
-    color: black;         /* Inherit the color from the surrounding text */
+    color: black;           /* Set link color to black */
     font-weight: bold;      /* Optional: Make the player name bold */
     display: inline-flex;
     align-items: center;    /* Center align the text with the image */
-  }
-  
-  /* Optional: Add a hover effect for the player name link */
-  .top-scorers-table .player-link:hover {
-    color: #4d8951; /* Change to a custom color on hover (example: green) */
-    transition: color 0.3s ease; /* Smooth transition for color change */
-  }
-  
-  /* Responsive Design for smaller screens */
-  @media (max-width: 768px) {
+}
+
+/* Ensuring the <a> tag from Link component is styled correctly */
+.top-scorers-table .player-link a {
+    text-decoration: none;  /* Remove underline */
+    color: black;           /* Set the color to black */
+}
+
+/* Hover effect for player name link */
+.top-scorers-table .player-link:hover {
+    color: black; /* Keep the text black on hover */
+    text-decoration: underline; /* Underline on hover */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for color and underline */
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
     .top-scorers-table th,
     .top-scorers-table td {
-      padding: 8px;
+        padding: 8px;
     }
-  
-    .player-photo {
-      width: 35px; /* Smaller size for mobile */
-      height: 35px;
+
+    .player-topscorers-photo {
+        width: 35px; /* Smaller size for mobile */
+        height: 35px;
     }
-  
+
     .team-logo {
-      width: 20px;
-      height: 20px;
+        width: 20px;
+        height: 20px;
     }
-  }
-  
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './TopScorersTable.css'
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const TopScorersTable = ({ leagueId, selectedSeason }) => {
@@ -60,7 +61,7 @@ const TopScorersTable = ({ leagueId, selectedSeason }) => {
                   <td>
                     {/* Link to Player Profile Page with player id */}
                     <Link to={`/player/${player.id}`}>
-                      <img src={player.photo} alt={player.name} className="player-photo" />
+                      <img src={player.photo} alt={player.name} className="player-topscorers-photo" />
                       {player.name}
                     </Link>
                   </td>

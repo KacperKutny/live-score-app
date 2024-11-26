@@ -74,6 +74,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer; /* Makes the league name/logo clickable */
 }
 
 .league-flag,
@@ -86,6 +87,12 @@
   font-size: 14px;
   font-weight: bold;
   color: #555;
+}
+
+/* Hover Effect on League Name/Logo */
+.league-info:hover {
+  text-decoration: underline;
+  text-decoration-color: black; /* Underline becomes black when hovered */
 }
 
 /* Responsive Design */

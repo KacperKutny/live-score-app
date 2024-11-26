@@ -173,7 +173,15 @@ const CareerTable = ({ careerData }) => {
                       <img src={team.logo} alt={`${team.name} logo`} width={20} />
                       {team.name}
                     </td>
-                    <td>{stat.league?.name || 'Unknown Competition'}</td>
+                    <td>
+                      {stat.league?.name ? (
+                        <a href={`/league/${stat.league.name}`} className="league-link">
+                          {stat.league.name}
+                        </a>
+                      ) : (
+                        'Unknown Competition'
+                      )}
+                    </td>
                     <td>{stat.games?.appearences || 0}</td>
                     <td>{stat.goals?.total || 0}</td>
                     <td>{stat.goals?.assists || 0}</td>
@@ -199,7 +207,6 @@ const CareerTable = ({ careerData }) => {
               <td>{totals.assists}</td>
               <td>{totals.yellowCards}</td>
               <td>{totals.redCards}</td>
-            
             </tr>
           </tfoot>
         )}
