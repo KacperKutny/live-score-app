@@ -1,10 +1,10 @@
-// src/pages/LeagueProfilePage.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LeagueProfile from '../components/LeagueProfile/LeagueProfile';
-import UpcomingMatches from '../components/UpcomingMatches/UpcomingMatches'; // Import the UpcomingMatches component
-import FinishedMatchesResults from '../components/FinishedMatchesResults/FinishedMatchesResults'; // Import the FinishedMatchesResults component
+import UpcomingMatches from '../components/UpcomingMatches/UpcomingMatches'; 
+import FinishedMatchesResults from '../components/FinishedMatchesResults/FinishedMatchesResults'; 
+import Standings from '../components/Standings/Standings'; // Import the Standings component
 import './LeagueProfilePage.css';
 
 const LeagueProfilePage = () => {
@@ -14,20 +14,21 @@ const LeagueProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Fetch league data
   useEffect(() => {
-    const fetchLeagueData = async (leagueId) => {
+    const fetchLeagueData = async () => {
       try {
         setLoading(true);
         setError(null);
 
         // Fetch league data
-        const leagueResponse = await fetch(`https://localhost:7013/api/leagues/${leagueId}`);
-        if (!leagueResponse.ok) throw new Error('League not found');
-        const leagueData = await leagueResponse.json();
+        const response = await fetch(`https://localhost:7013/api/leagues/${id}`);
+        if (!response.ok) throw new Error('League not found');
+        const data = await response.json();
 
-        if (leagueData && leagueData.league) {
-          setLeague(leagueData.league);  // Set the league data
-          setCountry(leagueData.country); // Set the country data
+        if (data && data.league) {
+          setLeague(data.league);  // Set the league data
+          setCountry(data.country); // Set the country data
         } else {
           throw new Error('Invalid league data');
         }
@@ -38,7 +39,7 @@ const LeagueProfilePage = () => {
       }
     };
 
-    fetchLeagueData(id);  // Fetch the league data based on the ID
+    fetchLeagueData();  // Fetch the league data based on the ID
   }, [id]);
 
   if (loading) return <div>Loading...</div>;
@@ -54,6 +55,9 @@ const LeagueProfilePage = () => {
 
       {/* Finished Matches Section */}
       <FinishedMatchesResults leagueId={id} />
+
+      {/* Standings Section */}
+      <Standings leagueId={id} /> {/* Pass the league ID dynamically */}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for n
 import './Header.css';
 import logo from '../../assets/MainLogo.png'; // Adjust the path based on your folder structure
 import searchLogo from '../../assets/searchPlayersLogo2.png'; // Import the search logo
-
+import league_search_logo from '../../assets/league_search_logo.png'
 const Header = ({ onSearchClick, onLeagueSearchClick }) => { // Accept onSearchClick as a prop
   const navigate = useNavigate(); // Initialize the navigate function
 
@@ -31,12 +31,14 @@ const Header = ({ onSearchClick, onLeagueSearchClick }) => { // Accept onSearchC
           alt="Search Players"
           className="search-logo"
           onClick={onSearchClick} // Trigger the onSearchClick function when clicked
+          title="Search Players"
         />
           <img
-          src={searchLogo}
+          src={league_search_logo}
           alt="Search Leagues"
           className="league-search-logo2"
           onClick={onLeagueSearchClick} // Trigger the onSearchClick function when clicked
+          title="Search Leagues"
         />
         </div>
       </div>

@@ -50,6 +50,6 @@
   transition: transform 0.3s ease; /* Smooth hover transition */
 }
 
-.league-search-logo:hover {
+.league-search-logo2:hover {
   transform: scale(1.1); /* Slightly enlarge the image on hover */
 }

@@ -1,0 +1,103 @@
+/* General Styling */
+.standings {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .standings h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .league-standings {
+    margin-bottom: 40px;
+  }
+  
+  .standings-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .standings-table th,
+  .standings-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+  }
+  
+  .standings-table th {
+    font-weight: bold;
+    color: #fff;
+    background-color: #4D8951;
+  }
+  
+  .standings-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .team-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  form td,
+  form th {
+    padding-left: 20px;
+  }
+  
+  form th {
+    text-align: left;
+  }
+  
+  .form {
+    display: flex;
+    gap: 2px;
+  }
+  
+  /* Styling for the colored squares inside the form column */
+  .win,
+  .loss,
+  .draw {
+    display: inline-block;
+    width: 24px;
+    height: 22px;
+    text-align: center;
+    line-height: 18px; /* Adjust to center the text inside the square */
+    font-weight: bold;
+    border-radius: 4px;
+    color: white;
+  }
+  
+  .win {
+    background-color: green;
+  }
+  
+  .loss {
+    background-color: red;
+  }
+  
+  .draw {
+    background-color: orange;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .standings-table th,
+    .standings-table td {
+      padding: 8px;
+    }
+  
+    .team-logo {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
