@@ -38,6 +38,12 @@
   margin-left: auto; /* Push the score to the right side */
 }
 
+/* Add this new class for live scores */
+.team-score.live-score {
+  color: red; /* Change color to red for live games */
+  font-weight: bold; /* Optional: Make the score bold for live games */
+}
+
 .match-status-row {
   display: flex;
   justify-content: flex-start;

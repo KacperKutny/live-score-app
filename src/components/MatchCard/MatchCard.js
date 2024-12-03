@@ -26,6 +26,7 @@ const MatchCard = ({
     date,
 }) => {
     const [matchStatus, setMatchStatus] = useState('');
+    const [isLive, setIsLive] = useState(false);
 
     useEffect(() => {
         let newMatchStatus = status;
@@ -38,6 +39,7 @@ const MatchCard = ({
         } else if (elapsed !== null && elapsed !== undefined && status !== "Match Finished") {
             newMatchStatus = `${elapsed}'`; // Show elapsed minutes
             matchStatusClass = 'live'; // Add class for live status
+            setIsLive(true); // Set match as live
         }
 
         console.log('Calculated newMatchStatus:', newMatchStatus);
@@ -70,7 +72,7 @@ const MatchCard = ({
                 <div className="team home-team">
                     <img src={homeLogo} alt={`${homeTeam} flag`} className="team-flag" />
                     <span className="team-name">{homeTeam}</span>
-                    <span className="team-score">{homeScore}</span>
+                    <span className={`team-score ${isLive ? 'live-score' : ''}`}>{homeScore}</span>
                 </div>
             </div>
 
@@ -84,7 +86,7 @@ const MatchCard = ({
                 <div className="team away-team">
                     <img src={awayLogo} alt={`${awayTeam} flag`} className="team-flag" />
                     <span className="team-name">{awayTeam}</span>
-                    <span className="team-score">{awayScore}</span>
+                    <span className={`team-score ${isLive ? 'live-score' : ''}`}>{awayScore}</span>
                 </div>
             </div>
         </div>
