@@ -175,7 +175,7 @@ const CareerTable = ({ careerData }) => {
                     </td>
                     <td>
                       {stat.league?.name ? (
-                        <a href={`/league/${stat.league.name}`} className="league-link">
+                        <a href={`/league/${stat.league.id}`} className="league-link">
                           {stat.league.name}
                         </a>
                       ) : (

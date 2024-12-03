@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { useNavigate } from 'react-router-dom';
 import './RecentFixtures.css';
 
 const RecentFixtures = ({ fixtures }) => {
   const [visibleFixtures, setVisibleFixtures] = useState(6); // Initially show 6 fixtures
   const [loadedFixtures, setLoadedFixtures] = useState(fixtures.slice(0, 6)); // Start with the first 6 fixtures
-  const navigate = useNavigate(); // Initialize the navigate function from react-router-dom
 
+  // Function to load more fixtures
   const loadMoreFixtures = () => {
-    // Increase the number of fixtures to load
     const newVisibleCount = visibleFixtures + 6;
     setVisibleFixtures(newVisibleCount);
-
-    // Add more fixtures to the currently loaded fixtures
-    setLoadedFixtures(fixtures.slice(0, newVisibleCount));
+    setLoadedFixtures(fixtures.slice(0, newVisibleCount)); // Add more fixtures to the list
   };
 
+  // If there are no fixtures, show a message
   if (!fixtures || fixtures.length === 0) return <p>No fixtures available</p>;
 
   // Sort fixtures by date (most recent first)
@@ -23,17 +21,34 @@ const RecentFixtures = ({ fixtures }) => {
 
   // Function to determine the winner team
   const getWinningTeam = (homeGoals, awayGoals, homeTeamName, awayTeamName) => {
-    if (homeGoals > awayGoals) {
-      return homeTeamName;
-    } else if (awayGoals > homeGoals) {
-      return awayTeamName;
-    }
+    if (homeGoals > awayGoals) return homeTeamName;
+    else if (awayGoals > homeGoals) return awayTeamName;
     return null; // In case of a draw, return null
   };
 
-  const handleLeagueClick = (leagueId) => {
-    // Navigate to the League Profile Page using the leagueId
-    navigate(`/league/${leagueId}`);
+  // Handle fixture click to open match details in a new window
+  const handleFixtureClick = (fixture) => {
+    // Prepare match data to pass to the new window
+    const matchData = {
+      matchId: fixture.fixture.id,
+      homeLogo: fixture.teams.home.logo,
+      homeTeam: fixture.teams.home.name,
+      homeTeamId: fixture.teams.home.id,
+      homeScore: fixture.goals.home,
+      awayLogo: fixture.teams.away.logo,
+      awayTeam: fixture.teams.away.name,
+      awayTeamId: fixture.teams.away.id,
+      awayScore: fixture.goals.away,
+      status: fixture.fixture.status.short,
+      elapsed: fixture.fixture.status.elapsed,
+      date: fixture.fixture.date
+    };
+
+    const encodedMatchData = encodeURIComponent(JSON.stringify(matchData));
+    const matchUrl = `/match/${fixture.fixture.id}?data=${encodedMatchData}`;
+    
+    // Open the match details in a new window
+    window.open(matchUrl, '_blank', 'width=900,height=1000,scrollbars=no,resizable=no');
   };
 
   return (
@@ -57,12 +72,12 @@ const RecentFixtures = ({ fixtures }) => {
             const winningTeam = getWinningTeam(homeGoals, awayGoals, fixture.teams.home.name, fixture.teams.away.name);
 
             return (
-              <tr key={fixture.fixture.id}>
+              <tr key={fixture.fixture.id} onClick={() => handleFixtureClick(fixture)}>
                 {/* Date Column */}
                 <td>{new Date(fixture.fixture.date).toLocaleDateString()}</td>
 
                 {/* League Column */}
-                <td className="league-info" onClick={() => handleLeagueClick(fixture.league.id)}>
+                <td className="league-info">
                   {fixture.league.flag ? (
                     <img
                       src={fixture.league.flag}
