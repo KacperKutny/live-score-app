@@ -1,0 +1,123 @@
+/* Match Lineup Container */
+.matchlineup-container {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.matchlineup-container h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Teams' Lineup Section */
+.lineup-teams-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Each Team Lineup Styling */
+.team-lineup {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.team-logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.team-header h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.lineup-start-xi,
+.lineup-substitutes {
+    margin-top: 20px;
+}
+
+h4 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* List Styling */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #f1f1f1;
+    border-radius: 6px;
+}
+
+li:nth-child(odd) {
+    background-color: #e6e6e6;
+}
+
+.player-number {
+    font-weight: bold;
+    color: #333;
+}
+
+.player-name {
+    color: #444;
+}
+
+/* Substitutes Section */
+.lineup-substitutes ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Display 3 substitutes per row */
+    gap: 15px;
+}
+
+.lineup-substitutes li {
+    background-color: #e0e0e0;
+    padding: 8px;
+    text-align: center;
+}
+
+.lineup-substitutes h4 {
+    margin-top: 30px;
+}
+/* Add this to your existing CSS */
+
+/* Player name hover effect */
+.player-name:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: black; /* Black color when hovered */
+    cursor: pointer; /* Cursor pointer to indicate clickability */
+  }
+  
+  /* For MatchEvents Component */
+  .matchevent-details strong:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+  }
+  

@@ -12,11 +12,11 @@ const formatMatchTime = (date) => {
     return matchDate.toLocaleTimeString([], options);
 };
 
-const MatchCard = ({ homeLogo, homeTeam, homeScore, awayLogo, awayTeam, awayScore, status, elapsed, date }) => {
+const MatchCard = ({ matchId, homeLogo, homeTeam, homeTeamId, homeScore, awayLogo, awayTeam, awayScore, awayTeamId, status, elapsed, date }) => {
     // Log props updates for debugging
     useEffect(() => {
-        console.log(`Props updated in MatchCard: homeTeam=${homeTeam}, homeScore=${homeScore}, awayTeam=${awayTeam}, awayScore=${awayScore}, status=${status}, elapsed=${elapsed}`);
-    }, [homeTeam, awayTeam, homeScore, awayScore, status, elapsed]);
+        console.log(`HomeTeam=${homeTeam}, ID=${homeTeamId}, awayTeam=${awayTeam}, ID=${awayTeamId}`);
+    }, [homeTeam, awayTeam, homeScore, awayScore, homeTeamId, awayTeamId, status, elapsed]);
 
     console.log("MatchCard - elapsed:", elapsed);
 
@@ -31,8 +31,33 @@ const MatchCard = ({ homeLogo, homeTeam, homeScore, awayLogo, awayTeam, awayScor
         matchStatus = `${elapsed}'`; // Show elapsed minutes (e.g., "45'")
     }
 
+    // Handle card click to open MatchSummaryPage in a new window
+    const handleClick = () => {
+        const matchData = {
+            matchId,
+            homeLogo,
+            homeTeam,
+            homeTeamId,
+            homeScore,
+            awayLogo,
+            awayTeam,
+            awayTeamId,
+            awayScore,
+            status,
+            elapsed,
+            date,
+        };
+        const encodedMatchData = encodeURIComponent(JSON.stringify(matchData));
+        const matchUrl = `/match/${matchId}?data=${encodedMatchData}`;
+        window.open(
+            matchUrl,
+            '_blank',
+            'width=900,height=1000,scrollbars=no,resizable=no'
+        ); // Open new window with specified size
+    };
+
     return (
-        <div className="match-card">
+        <div className="match-card" onClick={handleClick}>
             {/* Home Team */}
             <div className="match-row home-team-row">
                 <div className="team home-team">

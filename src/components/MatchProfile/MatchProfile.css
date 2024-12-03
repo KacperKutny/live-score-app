@@ -1,0 +1,212 @@
+/* MatchProfile Container */
+.matchprofile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  transition: all 0.3s ease;
+}
+
+/* Header Section (Home/Away Teams) */
+.matchprofile-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Team Section */
+.matchprofile-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  margin: 0 15px;
+}
+
+.matchprofile-team-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.matchprofile-team-name {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.matchprofile-team-score {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Match Info Section */
+.matchprofile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.matchprofile-status {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #f44336; /* Red for the status */
+  margin-bottom: 15px;
+}
+
+.matchprofile-date,
+.matchprofile-time {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Match Events Section */
+.matchprofile-extra-details {
+  margin-top: 30px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.matchprofile-detail-item {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.matchprofile-detail-item strong {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .matchprofile-header {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .matchprofile-team {
+      margin-bottom: 20px;
+  }
+
+  .matchprofile-info {
+      width: 100%;
+      padding: 15px;
+  }
+}
+
+/* Match Events Section */
+.matchprofile-events {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.matchprofile-events h3 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.matchprofile-events-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  margin: 0;
+  padding: 20px 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual Event Item */
+.matchprofile-event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.matchprofile-event-item.home-event {
+  justify-content: flex-start;
+  color: #007bff; /* Blue for home team */
+}
+
+.matchprofile-event-item.away-event {
+  justify-content: flex-end;
+  color: #e91e63; /* Pink for away team */
+}
+
+.event-time {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.event-details {
+  font-size: 1.2rem;
+  color: inherit;
+}
+
+.event-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.matchprofile-tabs {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.matchprofile-tabs button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.matchprofile-tabs button.active {
+  background-color: #3a3a3a;
+  color: white;
+}
+
+.matchprofile-tabs button:hover {
+  background-color: #ddd;
+}
+
+
+/* Event Item Layout for Mobile */
+@media (max-width: 600px) {
+  .matchprofile-event-item {
+      flex-direction: column;
+      text-align: center;
+  }
+}

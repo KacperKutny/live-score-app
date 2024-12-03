@@ -126,6 +126,7 @@ const LeagueContainer = () => {
           return (
             <LeagueCard
               key={league.id}  // Use stable key (id or leagueName)
+              leagueid={league.id}
               leagueName={league.leagueName}
               leagueLogo={league.leagueLogo}
               leagueFlag={league.leagueFlag}

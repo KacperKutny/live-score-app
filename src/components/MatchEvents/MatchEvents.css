@@ -1,0 +1,91 @@
+/* Match Events Styling */
+.matchprofile-events {
+    padding: 16px; /* Reduced padding */
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px; /* Slightly reduced border radius */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.matchprofile-events h3 {
+    text-align: center;
+    font-size: 1.8rem; /* Further reduced title font size */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px; /* Reduced bottom margin */
+}
+
+.matchprofile-events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap between events */
+    width: 100%;
+}
+
+.matchprofile-event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Further reduced gap between elements */
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px; /* Reduced padding */
+}
+
+.matchevent-time {
+    font-weight: 700;
+    font-size: 1rem; /* Reduced font size */
+    color: #333;
+}
+
+.matchevent-details {
+    font-size: 0.9rem; /* Further reduced font size */
+    color: #444;
+}
+
+.event-icon {
+    width: 18px; /* Further reduced icon size */
+    height: 18px; /* Further reduced icon size */
+    margin-right: 5px; /* Reduced space between icon and text */
+}
+
+.matchprofile-event-item.home-event {
+    color: #4D8951; /* Blue for home team events */
+}
+
+.matchprofile-event-item.away-event {
+    color: #e91e63; /* Red for away team events */
+}
+
+/* Player name hover effect */
+.player-name:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: black; /* Black color when hovered */
+    cursor: pointer; /* Cursor pointer to indicate clickability */
+}
+
+/* Player name styling for main player */
+.player-name-main {
+    font-weight: bold; /* Bold for main player */
+}
+
+/* Player name styling for assist player (normal weight) */
+.player-name-assist {
+    font-weight: normal; /* Normal font weight for assist */
+}
+
+/* For MatchEvents Component */
+.matchevent-details strong:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .matchprofile-event-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}

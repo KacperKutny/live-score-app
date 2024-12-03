@@ -18,10 +18,12 @@ const MatchList = ({ matches = [] }) => {
                 <MatchCard
                     key={`${match.fixture.id}-${match.elapsed}`}
                     homeTeam={match.teams.home.name}
+                    homeTeamId={match.teams.home.id}
                     awayTeam={match.teams.away.name}
                     date={match.fixture.date}
                     homeScore={match.goals.home}
                     awayScore={match.goals.away}
+                    awayTeamId={match.teams.away.id}
                     status={match.fixture.status.long}
                     elapsed={match.fixture.status.elapsed}
                     homeLogo={match.teams.home.logo}

@@ -2,7 +2,7 @@ import React from 'react';
 import MatchList from '../MatchList/MatchList';
 import './LeagueCard.css';
 
-const LeagueCard = ({ leagueName, leagueLogo, leagueFlag, matches }) => {
+const LeagueCard = ({leagueId, leagueName, leagueLogo, leagueFlag, matches }) => {
     // Determine the image to display: flag if available, else logo
     const displayImage = leagueFlag ? leagueFlag : leagueLogo;
 
