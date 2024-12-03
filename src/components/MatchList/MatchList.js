@@ -1,13 +1,8 @@
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import MatchCard from '../MatchCard/MatchCard';
 import './MatchList.css';
 
 const MatchList = ({ matches = [] }) => {
-    useEffect(() => {
-        console.log("Received updated matches in MatchList:", matches);
-    }, [matches]);  // The effect will trigger when matches prop changes
-
     if (!matches.length) {
         return <div>No matches available</div>;
     }
@@ -16,7 +11,7 @@ const MatchList = ({ matches = [] }) => {
         <div className="match-list">
             {matches.map((match) => (
                 <MatchCard
-                    key={`${match.fixture.id}-${match.elapsed}`}
+                    key={match.fixture.id}
                     homeTeam={match.teams.home.name}
                     homeTeamId={match.teams.home.id}
                     awayTeam={match.teams.away.name}
@@ -28,7 +23,7 @@ const MatchList = ({ matches = [] }) => {
                     elapsed={match.fixture.status.elapsed}
                     homeLogo={match.teams.home.logo}
                     awayLogo={match.teams.away.logo}
-                    matchId={match.fixture.id}  // Added matchId to identify the match for live updates
+                    matchId={match.fixture.id} 
                 />
             ))}
         </div>

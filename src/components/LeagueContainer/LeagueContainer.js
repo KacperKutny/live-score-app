@@ -10,100 +10,112 @@ const LeagueContainer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [noMatchesMessage, setNoMatchesMessage] = useState("");
-  const [webSocket, setWebSocket] = useState(null); // WebSocket state
+  const [noMatchesMessage, setNoMatchesMessage] = useState('');
+  const [webSocket, setWebSocket] = useState(null);
 
-  // Handle date change for date picker
+  // Handle date change for the date picker
   const handleDateChange = (date) => {
     const validDate = new Date(date);
-    setSelectedDate(validDate); // Update selected date state
+    setSelectedDate(validDate);
   };
 
-  // Fetch data for leagues by selected date
+  // Fetch data for leagues based on the selected date
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
-      setNoMatchesMessage("");
+      setNoMatchesMessage('');
 
       const today = new Date();
       const maxDate = new Date();
       maxDate.setDate(today.getDate() + 10);
 
-      // If the selected date is in the future (more than 10 days), show message
       if (selectedDate > maxDate) {
-        setNoMatchesMessage("No matches for this date yet.");
+        setNoMatchesMessage('No matches for this date yet.');
         setLeagues([]);
         setLoading(false);
         return;
       }
 
-      // Fetch leagues for the selected date
       const leaguesArray = await fetchLeaguesByDate(selectedDate);
 
       if (leaguesArray.length === 0) {
-        setNoMatchesMessage("No matches for this date yet.");
+        setNoMatchesMessage('No matches for this date yet.');
       }
 
-      setLeagues(leaguesArray); // Set leagues with the fetched data
+      setLeagues(leaguesArray);
       setLoading(false);
     } catch (err) {
-      setError(err.message); // Handle errors during fetch
+      setError(err.message);
       setLoading(false);
     }
   }, [selectedDate]);
 
-  // WebSocket logic to update match data in real-time
+  // Handle live updates from WebSocket
   useEffect(() => {
     const handleLiveUpdate = (liveMatch) => {
       console.log("WebSocket Message received:", liveMatch);
   
-      if (liveMatch && liveMatch.fixture && liveMatch.fixture.status) {
-          const newElapsed = liveMatch.fixture.status.Elapsed;
+      if (liveMatch?.fixture?.status) {
+        const matchId = liveMatch.fixture.id;
+        const matchStatus = liveMatch.fixture.status.long;
+        const newElapsed = liveMatch.fixture.elapsedMinutes;  // Use `elapsedMinutes` instead of `elapsed`
+        const newGoals = liveMatch.goals; // Get the updated goals data
   
-          setLeagues((prevLeagues) => {
-              return prevLeagues.map((league) => {
-                  const updatedMatches = league.matches.map((match) => {
-                      if (match.fixture.id === liveMatch.fixture.id) {
-                          // Only update the match if the elapsed time has actually changed
-                          if (match.elapsed !== newElapsed) {
-                              console.log(`Updating match ${match.fixture.id}: elapsed from ${match.elapsed} to ${newElapsed}`);
-                              return {
-                                  ...match, // Copy the existing match object
-                                  status: liveMatch.fixture.status.Long || "Unknown", // Update status
-                                  elapsed: newElapsed, // Update elapsed
-                                  homeScore: liveMatch.goals.Home, // Update scores
-                                  awayScore: liveMatch.goals.Away,
-                                  homeFlag: liveMatch.teams.home.flag,
-                                  awayFlag: liveMatch.teams.away.flag,
-                                  homeTeam: liveMatch.teams.home.name,
-                                  awayTeam: liveMatch.teams.away.name,
-                              };
-                          }
-                      }
-                      return match; // Return unchanged match
-                  });
+        // Check if elapsedMinutes exists
+        if (newElapsed === undefined || newElapsed === null) {
+          console.warn(`Skipping update for match ${matchId}: Elapsed time is missing.`);
+          return;
+        }
   
-                  return { ...league, matches: updatedMatches }; // Update league matches
-              });
+        // Update state with both new goals and elapsed minutes
+        setLeagues((prevLeagues) => {
+          return prevLeagues.map((league) => {
+            const updatedMatches = league.matches.map((match) => {
+              if (match.fixture.id === matchId) {
+                console.log(`Updating match ${matchId}: Previous elapsed: ${match.fixture.status.elapsed}, New elapsed: ${newElapsed}`);
+  
+                return {
+                  ...match,
+                  fixture: {
+                    ...match.fixture,
+                    status: {
+                      ...match.fixture.status,
+                      long: matchStatus || match.fixture.status.long,
+                      elapsed: newElapsed,  // Update with `newElapsed`
+                    },
+                  },
+                  goals: {
+                    home: newGoals.home ?? match.goals.home,
+                    away: newGoals.away ?? match.goals.away,
+                  },
+                };
+              }
+              return match;
+            });
+  
+            return { ...league, matches: updatedMatches };
           });
-      }
-  };
-  
-
-    const ws = initializeWebSocket(handleLiveUpdate);
-    setWebSocket(ws); // Store the WebSocket instance
-
-    return () => {
-      if (ws) {
-        ws.close(); // Cleanup WebSocket on component unmount
+        });
+      } else {
+        console.error("Invalid WebSocket message structure:", liveMatch);
       }
     };
-  }, []); // Only run once on component mount
+  
+    const ws = initializeWebSocket(handleLiveUpdate);
+    setWebSocket(ws);
+  
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, []);
+  
 
-  // Fetch leagues initially and when the selectedDate changes
+  // Fetch data when the selected date changes
   useEffect(() => {
-    fetchData(); // Call fetchData to update leagues when the selected date changes
-  }, [fetchData]); // Re-run whenever `fetchData` changes (which depends on `selectedDate`)
+    fetchData();
+  }, [fetchData]);
 
   if (loading) {
     return <div>Loading leagues...</div>;
@@ -122,18 +134,16 @@ const LeagueContainer = () => {
       {noMatchesMessage ? (
         <NoMatchesMessage message={noMatchesMessage} />
       ) : (
-        leagues.map((league) => {
-          return (
-            <LeagueCard
-              key={league.id}  // Use stable key (id or leagueName)
-              leagueid={league.id}
-              leagueName={league.leagueName}
-              leagueLogo={league.leagueLogo}
-              leagueFlag={league.leagueFlag}
-              matches={league.matches}  // Pass updated matches
-            />
-          );
-        })
+        leagues.map((league) => (
+          <LeagueCard
+            key={league.id}
+            leagueid={league.id}
+            leagueName={league.leagueName}
+            leagueLogo={league.leagueLogo}
+            leagueFlag={league.leagueFlag}
+            matches={league.matches}
+          />
+        ))
       )}
     </div>
   );
