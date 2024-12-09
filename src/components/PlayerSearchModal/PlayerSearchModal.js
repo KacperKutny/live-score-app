@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom';
 import PlayerSearchCard from '../PlayerSearchCard/PlayerSearchCard';
-import PlayerProfile from '../PlayerProfile/PlayerProfile';
 import './PlayerSearchModal.css';
 
-const PlayerSearchModal = ({ isOpen, onClose, onPlayerSelect }) => {
+const PlayerSearchModal = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [team, setTeam] = useState(null);
+  const navigate = useNavigate(); 
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -30,35 +29,18 @@ const PlayerSearchModal = ({ isOpen, onClose, onPlayerSelect }) => {
       }
 
       const data = await response.json();
-      console.log('Search results:', data); // Log search results
       setSearchResults(data || []);
     } catch (error) {
       setError('An error occurred while fetching search results.');
-      console.error(error); // Log error for debugging
     } finally {
       setLoading(false);
     }
   };
 
-  const handlePlayerCardClick = async (player) => {
-    setSelectedPlayer(player);
-  
-    try {
-      const response = await fetch(`https://localhost:7013/api/players/${player.id}/squads`);
-      if (!response.ok) throw new Error('Error fetching team data');
-  
-      const data = await response.json();
-      const teamData = data?.[0]?.team || null;
-      setTeam(teamData);
-  
-      onPlayerSelect({ ...player, team: teamData });
-    } catch (error) {
-      console.error('Failed to fetch team data:', error);
-    } finally {
-      onClose();
-    }
+  const handlePlayerCardClick = (playerId) => {
+    navigate(`/player/${playerId}`); 
+    onClose(); 
   };
-  
 
   if (!isOpen) return null;
 
@@ -92,7 +74,7 @@ const PlayerSearchModal = ({ isOpen, onClose, onPlayerSelect }) => {
               <PlayerSearchCard
                 key={player.player.id}
                 player={player.player}
-                onClick={() => handlePlayerCardClick(player.player)}
+                onClick={() => handlePlayerCardClick(player.player.id)} 
               />
             ))
           ) : (
@@ -100,13 +82,6 @@ const PlayerSearchModal = ({ isOpen, onClose, onPlayerSelect }) => {
           )}
         </div>
       </div>
-      {/* Render PlayerProfile when a player is selected */}
-      {selectedPlayer && (
-        <PlayerProfile
-          player={selectedPlayer}
-          team={team}
-        />
-      )}
     </div>
   );
 };

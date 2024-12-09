@@ -1,4 +1,4 @@
-/* General Styling */
+
 .recent-fixtures-container {
   padding: 10px;
   max-width: 1200px;
@@ -8,138 +8,138 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.recent-fixtures-container h3 {
+.recent-fixtures-header {
   text-align: center;
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
 }
 
-.fixtures-table {
+.recent-fixtures-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.fixtures-table th,
-.fixtures-table td {
+.recent-fixtures-table th,
+.recent-fixtures-table td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
   vertical-align: middle;
 }
 
-.fixtures-table th {
+.recent-fixtures-table th {
   font-weight: bold;
-  color: #fff; /* White text */
-  background-color: #4D8951; /* Green background */
+  color: #fff; 
+  background-color: #4D8951; 
 }
 
-.fixtures-table th:nth-child(1) { 
-  background-color: #4D8951; /* Green for the first column (League) */
+.recent-fixtures-table th:nth-child(1) { 
+  background-color: #4D8951;
 }
 
-.fixtures-table th:nth-child(2) {
-  background-color: #4D8951; /* Green for the second column (Away Team) */
+.recent-fixtures-table th:nth-child(2) {
+  background-color: #4D8951; 
 }
 
-.fixtures-table th:nth-child(3) {
-  background-color: #4D8951; /* Green for the third column (Score) */
+.recent-fixtures-table th:nth-child(3) {
+  background-color: #4D8951; 
 }
 
-.fixtures-table tr:hover {
+.recent-fixtures-table tr:hover {
   background-color: #f1f1f1;
 }
 
-.team-name {
+.recent-fixtures-team-name {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.team-logo {
+.recent-fixtures-team-logo {
   width: 30px;
   height: 30px;
 }
 
-.score {
+.recent-fixtures-score {
   font-weight: bold;
   text-align: center;
   color: #333;
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff; 
   padding: 5px 10px;
   border-radius: 5px;
 }
 
-.league-info {
+.recent-fixtures-league-info {
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: pointer; /* Makes the league name/logo clickable */
+  cursor: pointer; 
 }
 
-.league-flag,
-.league-logo {
+.recent-fixtures-league-flag,
+.recent-fixtures-league-logo {
   width: 24px;
   height: auto;
 }
 
-.league-info span {
+.recent-fixtures-league-info span {
   font-size: 14px;
   font-weight: bold;
   color: #555;
 }
 
-/* Hover Effect on League Name/Logo */
-.league-info:hover {
+
+.recent-fixtures-league-info:hover {
   text-decoration: underline;
-  text-decoration-color: black; /* Underline becomes black when hovered */
+  text-decoration-color: black; 
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
-  .fixtures-table th,
-  .fixtures-table td {
+  .recent-fixtures-table th,
+  .recent-fixtures-table td {
     padding: 8px;
   }
 
-  .team-logo {
+  .recent-fixtures-team-logo {
     width: 20px;
     height: 20px;
   }
 
-  .league-flag,
-  .league-logo {
+  .recent-fixtures-league-flag,
+  .recent-fixtures-league-logo {
     width: 20px;
     height: 20px;
   }
 }
 
-.load-more-btn {
+.recent-fixtures-load-more-btn {
   display: block;
-  margin: 20px auto; /* Centers the button horizontally */
-  padding: 12px 25px; /* Adds padding for a larger clickable area */
-  background: linear-gradient(135deg, #4D8951, #4D8951); /* Gradient background */
+  margin: 20px auto; 
+  padding: 12px 25px; 
+  background: linear-gradient(135deg, #4D8951, #4D8951); 
   color: white;
   font-size: 16px;
   font-weight: bold;
   border: none;
-  border-radius: 50px; /* Rounded corners for a modern look */
+  border-radius: 50px; 
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
-  transition: all 0.3s ease; /* Smooth transition for all properties */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
 }
 
-.load-more-btn:hover {
-  background: linear-gradient(135deg, #4D8951, #4D8951); /* Reverse the gradient on hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increase shadow intensity on hover */
+.recent-fixtures-load-more-btn:hover {
+  background: linear-gradient(135deg, #4D8951, #4D8951); 
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
 }
 
-.load-more-btn:focus {
-  outline: none; /* Remove default outline when focused */
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.4); /* Add focus outline with a blue glow */
+.recent-fixtures-load-more-btn:focus {
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.4);
 }
 
-.bold {
-  font-weight: bold;  /* Make the font weight thicker for the winner */
+.recent-fixtures-bold {
+  font-weight: bold; 
 }

@@ -5,7 +5,7 @@ import PlayerProfile from '../components/PlayerProfile/PlayerProfile';
 import CareerTable from '../components/CareerTable/CareerTable';
 import RecentFixtures from '../components/RecentFixtures/RecentFixtures';
 import TransfersTable from '../components/TransfersTable/TransfersTable';
-import PlayerSearchModal from '../components/PlayerSearchModal/PlayerSearchModal'; // Import the search modal
+import PlayerSearchModal from '../components/PlayerSearchModal/PlayerSearchModal'; 
 import './PlayerProfilePage.css';
 
 const PlayerProfilePage = () => {
@@ -14,13 +14,10 @@ const PlayerProfilePage = () => {
   const [team, setTeam] = useState(null);
   const [careerData, setCareerData] = useState([]);
   const [recentFixtures, setRecentFixtures] = useState([]);
-  const [transfers, setTransfers] = useState([]); // New state for transfers
+  const [transfers, setTransfers] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // State for search modal
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   useEffect(() => {
     const fetchPlayerData = async (playerId) => {
@@ -28,12 +25,12 @@ const PlayerProfilePage = () => {
         setLoading(true);
         setError(null);
 
-        // Fetch player data
+        // Fetch basic player data
         const playerResponse = await fetch(`https://localhost:7013/api/players/${playerId}`);
         if (!playerResponse.ok) throw new Error('Player not found');
         const playerData = await playerResponse.json();
 
-        // Fetch current team
+        // Fetch current team for player's profile
         const teamResponse = await fetch(`https://localhost:7013/api/players/${playerId}/squads`);
         const teamData = teamResponse.ok ? await teamResponse.json() : [];
 
@@ -62,14 +59,13 @@ const PlayerProfilePage = () => {
         const transfersResponse = await fetch(`https://localhost:7013/api/transfers/${playerId}`);
         if (transfersResponse.ok) {
           const transfersData = await transfersResponse.json();
-          setTransfers(transfersData[0]?.transfers || []); // Extract transfers array
+          setTransfers(transfersData[0]?.transfers || []); 
         } else {
           console.warn('No transfers found.');
         }
 
-        // Combine career data
+        
         const combinedCareerData = statsData.map(stat => {
-          // For each season in statsData, match the teams
           const seasonTeams = teamsData.filter(team => team.seasons.includes(stat.season));
 
           return {
@@ -100,12 +96,8 @@ const PlayerProfilePage = () => {
     setIsSearchModalOpen(true);
   };
 
-  const handlePlayerSelect = (player) => {
-    setSelectedPlayer(player); // Set selected player and reload data for the new player
+  const handlePlayerSelect = () => {
     setIsSearchModalOpen(false);
-
-    // Fetch data for the selected player
-  
   };
 
   if (loading) return <div>Loading...</div>;
@@ -113,13 +105,12 @@ const PlayerProfilePage = () => {
 
   return (
     <div className="player-profile-page">
-      <Header onSearchClick={handlePlayerSearchClick} /> {/* Add search click handler */}
+      <Header onSearchClick={handlePlayerSearchClick} />
       <PlayerProfile player={player} team={team} />
       <RecentFixtures fixtures={recentFixtures} />
       <CareerTable careerData={careerData} />
       <TransfersTable transfers={transfers} />
 
-      {/* Player search modal */}
       <PlayerSearchModal
         isOpen={isSearchModalOpen}
         onClose={() => setIsSearchModalOpen(false)}

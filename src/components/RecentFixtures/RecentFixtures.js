@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './RecentFixtures.css';
 
 const RecentFixtures = ({ fixtures }) => {
-  const [visibleFixtures, setVisibleFixtures] = useState(6); // Initially show 6 fixtures
-  const [loadedFixtures, setLoadedFixtures] = useState(fixtures.slice(0, 6)); // Start with the first 6 fixtures
+  const [visibleFixtures, setVisibleFixtures] = useState(6); 
 
-  // Function to load more fixtures
   const loadMoreFixtures = () => {
-    const newVisibleCount = visibleFixtures + 6;
-    setVisibleFixtures(newVisibleCount);
-    setLoadedFixtures(fixtures.slice(0, newVisibleCount)); // Add more fixtures to the list
+    setVisibleFixtures((prev) => prev + 6);
   };
 
-  // If there are no fixtures, show a message
   if (!fixtures || fixtures.length === 0) return <p>No fixtures available</p>;
 
-  // Sort fixtures by date (most recent first)
-  const sortedFixtures = fixtures.sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date));
+  const sortedFixtures = [...fixtures].sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date));
 
-  // Function to determine the winner team
   const getWinningTeam = (homeGoals, awayGoals, homeTeamName, awayTeamName) => {
     if (homeGoals > awayGoals) return homeTeamName;
-    else if (awayGoals > homeGoals) return awayTeamName;
-    return null; // In case of a draw, return null
+    if (awayGoals > homeGoals) return awayTeamName;
+    return null;
   };
 
-  // Handle fixture click to open match details in a new window
   const handleFixtureClick = (fixture) => {
-    // Prepare match data to pass to the new window
     const matchData = {
       matchId: fixture.fixture.id,
       homeLogo: fixture.teams.home.logo,
@@ -39,75 +29,77 @@ const RecentFixtures = ({ fixtures }) => {
       awayTeam: fixture.teams.away.name,
       awayTeamId: fixture.teams.away.id,
       awayScore: fixture.goals.away,
-      status: fixture.fixture.status.short,
+      status: fixture.fixture.status.long,
       elapsed: fixture.fixture.status.elapsed,
-      date: fixture.fixture.date
+      date: fixture.fixture.date,
     };
 
     const encodedMatchData = encodeURIComponent(JSON.stringify(matchData));
     const matchUrl = `/match/${fixture.fixture.id}?data=${encodedMatchData}`;
-    
-    // Open the match details in a new window
     window.open(matchUrl, '_blank', 'width=900,height=1000,scrollbars=no,resizable=no');
   };
 
   return (
     <div className="recent-fixtures-container">
-      <h3>Recent Fixtures</h3>
+      <h3 className="recent-fixtures-header">Recent Fixtures</h3>
 
-      <table className="fixtures-table">
+      <table className="recent-fixtures-table">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>League</th>
-            <th>Home Team</th>
-            <th>Score</th>
-            <th>Away Team</th>
+            <th className="recent-fixtures-header-date">Date</th>
+            <th className="recent-fixtures-header-league">League</th>
+            <th className="recent-fixtures-header-home">Home Team</th>
+            <th className="recent-fixtures-header-score">Score</th>
+            <th className="recent-fixtures-header-away">Away Team</th>
           </tr>
         </thead>
         <tbody>
           {sortedFixtures.slice(0, visibleFixtures).map((fixture) => {
-            const homeGoals = fixture.goals.home;
-            const awayGoals = fixture.goals.away;
-            const winningTeam = getWinningTeam(homeGoals, awayGoals, fixture.teams.home.name, fixture.teams.away.name);
+            const { home, away } = fixture.goals;
+            const winningTeam = getWinningTeam(home, away, fixture.teams.home.name, fixture.teams.away.name);
 
             return (
-              <tr key={fixture.fixture.id} onClick={() => handleFixtureClick(fixture)}>
-                {/* Date Column */}
-                <td>{new Date(fixture.fixture.date).toLocaleDateString()}</td>
-
-                {/* League Column */}
-                <td className="league-info">
-                  {fixture.league.flag ? (
-                    <img
-                      src={fixture.league.flag}
-                      alt={fixture.league.name}
-                      className="league-flag"
-                    />
-                  ) : (
-                    <img
-                      src={fixture.league.logo}
-                      alt={fixture.league.name}
-                      className="league-logo"
-                    />
-                  )}
+              <tr
+                key={fixture.fixture.id}
+                onClick={() => handleFixtureClick(fixture)}
+                className="recent-fixtures-row"
+              >
+                <td className="recent-fixtures-date">
+                  {new Date(fixture.fixture.date).toLocaleDateString()}
+                </td>
+                <td className="recent-fixtures-league-info">
+                  <img
+                    src={fixture.league.flag || fixture.league.logo}
+                    alt={fixture.league.name}
+                    className="recent-fixtures-league-logo"
+                  />
                   {fixture.league.name}
                 </td>
-
-                {/* Home Team Column */}
-                <td className={`home-team-name ${winningTeam === fixture.teams.home.name ? 'bold' : ''}`}>
-                  <img src={fixture.teams.home.logo} alt={fixture.teams.home.name} className="team-logo" />
+                <td
+                  className={`recent-fixtures-home-team ${
+                    winningTeam === fixture.teams.home.name ? 'recent-fixtures-bold' : ''
+                  }`}
+                >
+                  <img
+                    src={fixture.teams.home.logo}
+                    alt={fixture.teams.home.name}
+                    className="recent-fixtures-team-logo"
+                  />
                   {fixture.teams.home.name}
                 </td>
-
-                {/* Score Column */}
-                <td className="score">
-                  {homeGoals} - {awayGoals}
+                <td className="recent-fixtures-score">
+                  {home} - {away}
                 </td>
-
-                {/* Away Team Column */}
-                <td className={`away-team-name ${winningTeam === fixture.teams.away.name ? 'bold' : ''}`}>
-                  <img src={fixture.teams.away.logo} alt={fixture.teams.away.name} className="team-logo" />
+                <td
+                  className={`recent-fixtures-away-team ${
+                    winningTeam === fixture.teams.away.name ? 'recent-fixtures-bold' : ''
+                  }`}
+                >
+                  <img
+                    src={fixture.teams.away.logo}
+                    alt={fixture.teams.away.name}
+                    className="recent-fixtures-team-logo"
+                  />
                   {fixture.teams.away.name}
                 </td>
               </tr>
@@ -116,9 +108,8 @@ const RecentFixtures = ({ fixtures }) => {
         </tbody>
       </table>
 
-      {/* Load More Button */}
       {visibleFixtures < fixtures.length && (
-        <button onClick={loadMoreFixtures} className="load-more-btn">
+        <button onClick={loadMoreFixtures} className="recent-fixtures-load-more-btn">
           Load More
         </button>
       )}

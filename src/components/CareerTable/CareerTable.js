@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './CareerTable.css';
 
 const CareerTable = ({ careerData }) => {
@@ -6,7 +6,7 @@ const CareerTable = ({ careerData }) => {
   const [selectedTeam, setSelectedTeam] = useState('');
   const [filteredData, setFilteredData] = useState(careerData);
 
-  // Extract unique league names from the careerData for the filter options
+
   const getUniqueLeagues = () => {
     const leagues = new Set();
     careerData.forEach(({ teams }) => {
@@ -21,7 +21,6 @@ const CareerTable = ({ careerData }) => {
     return Array.from(leagues);
   };
 
-  // Extract unique team names from the careerData for the filter options
   const getUniqueTeams = () => {
     const teams = new Set();
     careerData.forEach(({ teams: teamData }) => {
@@ -34,23 +33,19 @@ const CareerTable = ({ careerData }) => {
     return Array.from(teams);
   };
 
-  // Handle league selection from the filter
   const handleLeagueSelect = (leagueName) => {
     setSelectedLeague(leagueName);
     applyFilters(leagueName, selectedTeam);
   };
 
-  // Handle team selection from the filter
   const handleTeamSelect = (teamName) => {
     setSelectedTeam(teamName);
     applyFilters(selectedLeague, teamName);
   };
 
-  // Apply both league and team filters
   const applyFilters = (leagueName, teamName) => {
     let filtered = careerData;
 
-    // Apply league filter if a league is selected
     if (leagueName) {
       filtered = filtered.map(({ season, teams }) => {
         const filteredTeams = teams.map((team) => {
@@ -58,25 +53,24 @@ const CareerTable = ({ careerData }) => {
             (stat) => stat.league.name === leagueName
           );
           return { ...team, statistics: filteredStats };
-        }).filter((team) => team.statistics.length > 0); // Only keep teams with data for the selected league
+        }).filter((team) => team.statistics.length > 0); 
 
         return { season, teams: filteredTeams };
-      }).filter((item) => item.teams.length > 0); // Only keep seasons with data for the selected league
+      }).filter((item) => item.teams.length > 0); 
     }
 
-    // Apply team filter if a team is selected
+
     if (teamName) {
       filtered = filtered.map(({ season, teams }) => {
         const filteredTeams = teams.filter((team) => team.name === teamName);
 
         return { season, teams: filteredTeams };
-      }).filter((item) => item.teams.length > 0); // Only keep seasons with data for the selected team
+      }).filter((item) => item.teams.length > 0); 
     }
 
     setFilteredData(filtered.length > 0 ? filtered : []);
   };
 
-  // Calculate totals for the filtered data
   const calculateTotals = () => {
     const totals = {
       appearances: 0,
@@ -103,11 +97,11 @@ const CareerTable = ({ careerData }) => {
 
   const totals = calculateTotals();
 
-  // Get the league and team options dynamically
+
   const leagueOptions = getUniqueLeagues();
   const teamOptions = getUniqueTeams();
 
-  // Reversing the data so that the latest seasons appear at the top
+
   const reversedFilteredData = [...filteredData].reverse();
 
   return (

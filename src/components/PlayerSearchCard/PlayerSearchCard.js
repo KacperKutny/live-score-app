@@ -1,14 +1,12 @@
-// src/components/PlayerSearchCard.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // For navigation
-import './PlayerSearchCard.css'; // Import styles for PlayerSearchCard
+import { useNavigate } from 'react-router-dom';
+import './PlayerSearchCard.css'; 
 
 const PlayerSearchCard = ({ player }) => {
   const navigate = useNavigate();
 
-  // Handle player card click
   const handleCardClick = () => {
-    navigate(`/player/${player.id}`); // Navigate to the player profile page with player ID
+    navigate(`/player/${player.id}`); 
   };
 
   return (

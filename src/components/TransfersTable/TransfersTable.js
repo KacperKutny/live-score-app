@@ -2,7 +2,7 @@ import React from 'react';
 import './TransfersTable.css';
 
 const TransfersTable = ({ transfers }) => {
-  // Ensure transfers is valid and has data
+
   if (!transfers || transfers.length === 0) {
     return <p>No transfer history available.</p>;
   }

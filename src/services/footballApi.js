@@ -1,7 +1,6 @@
 import { groupBy, map } from 'lodash';
 
 let webSocket = null;
-let onLiveUpdate = null;
 
 // Function to initialize WebSocket
 export const initializeWebSocket = (onMessageCallback) => {

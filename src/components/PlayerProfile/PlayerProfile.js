@@ -31,7 +31,6 @@ const PlayerProfile = ({ player, team }) => {
           </div>
         </div>
 
-        {/* Display team details */}
         <div className="player-team">
           <div className="team-info">
             <img 
