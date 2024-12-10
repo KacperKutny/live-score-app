@@ -8,7 +8,6 @@ const LeagueProfile = ({ league, country }) => {
   return (
     <div className="league-profile-container">
       <div className="league-profile-header">
-        {/* League Logo and Name */}
         <div className="league-info">
           <img src={league.logo} alt={league.name} className="league-profile-logo" />
           <div>
@@ -16,7 +15,6 @@ const LeagueProfile = ({ league, country }) => {
           </div>
         </div>
 
-        {/* Country Flag and Name */}
         <div className="country-info">
           <img src={country.flag} alt={country.name} className="country-flag" />
           <div>

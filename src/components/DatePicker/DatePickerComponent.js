@@ -1,15 +1,15 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css"; // Import default styling
-import './DatePickerComponent.css'; // Custom styling for the component
-import { FaCalendarAlt } from 'react-icons/fa'; // Calendar icon from react-icons
+import "react-datepicker/dist/react-datepicker.css"; 
+import './DatePickerComponent.css'; 
+import { FaCalendarAlt } from 'react-icons/fa'; 
 
 const DatePickerComponent = ({ selectedDate, onDateChange }) => {
 
   
   return (
     <div className="date-picker-container">
-      <FaCalendarAlt className="calendar-icon" /> {/* Calendar Icon */}
+      <FaCalendarAlt className="calendar-icon" /> 
       <DatePicker
         selected={selectedDate}
         onChange={onDateChange}

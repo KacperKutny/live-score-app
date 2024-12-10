@@ -1,4 +1,4 @@
-// src/components/LeagueSearchModal/LeagueSearchModal.js
+
 import React, { useState } from 'react';
 import LeagueSearchCard from '../LeagueSearchCard/LeagueSearchCard';
 import './LeagueSearchModal.css';

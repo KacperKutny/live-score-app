@@ -1,4 +1,4 @@
-// src/components/LeagueSearchCard/LeagueSearchCard.js
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LeagueSearchCard.css';
@@ -6,10 +6,10 @@ import './LeagueSearchCard.css';
 const LeagueSearchCard = ({ league }) => {
   const navigate = useNavigate();
 
-  // Handle card click to navigate to league profile
+
   const handleCardClick = () => {
-    console.log(`Navigating to /league/${league.league.id}`); // Debugging log
-    navigate(`/league/${league.league.id}`); // Navigate to the LeagueProfilePage
+   // console.log(`Navigating to /league/${league.league.id}`); // Debugging log
+    navigate(`/league/${league.league.id}`); 
   };
 
   return (

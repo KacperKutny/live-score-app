@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import MatchEvents from '../MatchEvents/MatchEvents';
-import MatchStatistics from '../MatchStatistics/MatchStatistics'; // Import MatchStatistics component
-import MatchLineUp from '../MatchLineUp/MatchLineUp'; // Import MatchLineUp component
+import MatchStatistics from '../MatchStatistics/MatchStatistics'; 
+import MatchLineUp from '../MatchLineUp/MatchLineUp'; 
 import './MatchProfile.css';
 
 const MatchProfile = () => {
-    const { matchId } = useParams(); // Get matchId from URL params
-    const [searchParams] = useSearchParams(); // Get query parameters
-    const matchData = JSON.parse(decodeURIComponent(searchParams.get('data'))); // Decode match data
-    const [activeTab, setActiveTab] = useState('events'); // State to manage active tab (default is 'events')
+    const { matchId } = useParams(); 
+    const [searchParams] = useSearchParams(); 
+    const matchData = JSON.parse(decodeURIComponent(searchParams.get('data'))); 
+    const [activeTab, setActiveTab] = useState('events'); 
 
     if (!matchData) {
         return <div>No match data available.</div>;
@@ -19,14 +19,13 @@ const MatchProfile = () => {
         setActiveTab(tab);
     };
 
-    // Convert matchId to a number
     const matchIdNumber = Number(matchId);
 
     return (
         <div className="matchprofile-container">
-            {/* Header Section */}
+           
             <div className="matchprofile-header">
-                {/* Home Team */}
+                
                 <div className="matchprofile-team matchprofile-home-team">
                     <img
                         src={matchData.homeLogo}
@@ -37,7 +36,7 @@ const MatchProfile = () => {
                     <p className="matchprofile-team-score">{matchData.homeScore}</p>
                 </div>
 
-                {/* Match Info */}
+                
                 <div className="matchprofile-info">
                     <p className="matchprofile-date">
                         Date: {new Date(matchData.date).toLocaleDateString()}
@@ -48,7 +47,7 @@ const MatchProfile = () => {
                     <p className="matchprofile-status">{matchData.status}</p>
                 </div>
 
-                {/* Away Team */}
+                
                 <div className="matchprofile-team matchprofile-away-team">
                     <img
                         src={matchData.awayLogo}
@@ -60,7 +59,7 @@ const MatchProfile = () => {
                 </div>
             </div>
 
-            {/* Tab Buttons */}
+          
             <div className="matchprofile-tabs">
                 <button
                     className={activeTab === 'events' ? 'active' : ''}
@@ -82,7 +81,7 @@ const MatchProfile = () => {
                 </button>
             </div>
 
-            {/* Conditional Rendering of Match Events, Match Statistics, and Lineups */}
+
             {activeTab === 'events' && (
                 <MatchEvents    
                     matchId={matchIdNumber}  

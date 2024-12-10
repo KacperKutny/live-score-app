@@ -1,4 +1,3 @@
-/* Match Lineup Container */
 .matchlineup-container {
     font-family: Arial, sans-serif;
     padding: 30px;
@@ -15,14 +14,12 @@
     margin-bottom: 30px;
 }
 
-/* Teams' Lineup Section */
 .lineup-teams-container {
     display: flex;
     justify-content: space-between;
     gap: 40px;
 }
 
-/* Each Team Lineup Styling */
 .team-lineup {
     flex: 1;
     background-color: #ffffff;
@@ -58,7 +55,6 @@ h4 {
     margin-bottom: 10px;
 }
 
-/* List Styling */
 ul {
     list-style-type: none;
     padding-left: 0;
@@ -87,10 +83,9 @@ li:nth-child(odd) {
     color: #444;
 }
 
-/* Substitutes Section */
 .lineup-substitutes ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Display 3 substitutes per row */
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
@@ -103,21 +98,17 @@ li:nth-child(odd) {
 .lineup-substitutes h4 {
     margin-top: 30px;
 }
-/* Add this to your existing CSS */
 
-/* Player name hover effect */
 .player-name:hover {
-    text-decoration: underline;
-    font-weight: bold;
-    color: black; /* Black color when hovered */
-    cursor: pointer; /* Cursor pointer to indicate clickability */
-  }
-  
-  /* For MatchEvents Component */
-  .matchevent-details strong:hover {
     text-decoration: underline;
     font-weight: bold;
     color: black;
     cursor: pointer;
-  }
-  
+}
+
+.matchevent-details strong:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}

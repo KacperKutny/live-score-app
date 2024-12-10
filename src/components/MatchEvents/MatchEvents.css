@@ -1,24 +1,23 @@
-/* Match Events Styling */
 .matchprofile-events {
-    padding: 16px; /* Reduced padding */
+    padding: 16px;
     width: 100%;
     background-color: #fff;
-    border-radius: 10px; /* Slightly reduced border radius */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .matchprofile-events h3 {
     text-align: center;
-    font-size: 1.8rem; /* Further reduced title font size */
+    font-size: 1.8rem;
     font-weight: 600;
     color: #333;
-    margin-bottom: 16px; /* Reduced bottom margin */
+    margin-bottom: 16px;
 }
 
 .matchprofile-events-container {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Reduced gap between events */
+    gap: 10px;
     width: 100%;
 }
 
@@ -26,55 +25,51 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px; /* Further reduced gap between elements */
+    gap: 10px;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 6px; /* Reduced padding */
+    padding-bottom: 6px;
 }
 
 .matchevent-time {
     font-weight: 700;
-    font-size: 1rem; /* Reduced font size */
+    font-size: 1rem;
     color: #333;
 }
 
 .matchevent-details {
-    font-size: 0.9rem; /* Further reduced font size */
+    font-size: 0.9rem;
     color: #444;
 }
 
 .event-icon {
-    width: 18px; /* Further reduced icon size */
-    height: 18px; /* Further reduced icon size */
-    margin-right: 5px; /* Reduced space between icon and text */
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
 }
 
 .matchprofile-event-item.home-event {
-    color: #4D8951; /* Blue for home team events */
+    color: #4D8951;
 }
 
 .matchprofile-event-item.away-event {
-    color: #e91e63; /* Red for away team events */
+    color: #e91e63;
 }
 
-/* Player name hover effect */
 .player-name:hover {
     text-decoration: underline;
     font-weight: bold;
-    color: black; /* Black color when hovered */
-    cursor: pointer; /* Cursor pointer to indicate clickability */
+    color: black;
+    cursor: pointer;
 }
 
-/* Player name styling for main player */
 .player-name-main {
-    font-weight: bold; /* Bold for main player */
+    font-weight: bold;
 }
 
-/* Player name styling for assist player (normal weight) */
 .player-name-assist {
-    font-weight: normal; /* Normal font weight for assist */
+    font-weight: normal;
 }
 
-/* For MatchEvents Component */
 .matchevent-details strong:hover {
     text-decoration: underline;
     font-weight: bold;
@@ -82,10 +77,4 @@
     cursor: pointer;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .matchprofile-event-item {
-        flex-direction: column;
-        text-align: center;
-    }
-}
+

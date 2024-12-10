@@ -1,62 +1,60 @@
-/* LeagueSearchCard.css */
 .league-search-card {
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 15px;
-    transition: transform 0.2s ease;
-    cursor: pointer;
-    background-color: #ffffff;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 200px; /* Set a fixed width for uniform card size */
-    height: 250px; /* Set a fixed height for uniform card size */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ensures spacing between elements */
-    align-items: center;
-    margin: 10px auto; /* Center card and add spacing */
-  }
-  
-  .league-search-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .league-search-logo {
-    width: 100px; /* Adjust league logo size */
-    height: 100px;
-    margin-bottom: 15px;
-  }
-  
-  .league-search-details h3 {
-    font-size: 1.3rem; /* Larger text for league name */
-    margin: 10px 0; /* Consistent spacing */
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .league-search-details .country-search-info {
-    margin-top: auto; /* Push the country info to the bottom of the card */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Increase spacing between flag and text */
-  }
-  
-  .league-search-details .country-search-info img {
-    width: 30px; /* Flag size */
-    height: 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .league-search-details .country-search-info p {
-    font-size: 1rem; /* Country name font size */
-    color: #555;
-    margin: 0;
-  }
-  
-  .league-search-details .country-search-info p strong {
-    color: #4D8951;
-  }
-  
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.league-search-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.league-search-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.league-search-details h3 {
+  font-size: 1.3rem;
+  margin: 10px 0;
+  color: #333;
+  font-weight: bold;
+}
+
+.league-search-details .country-search-info {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.league-search-details .country-search-info img {
+  width: 30px;
+  height: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.league-search-details .country-search-info p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+.league-search-details .country-search-info p strong {
+  color: #4D8951;
+}

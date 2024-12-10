@@ -1,14 +1,14 @@
-// src/components/FinishedMatchesResults/FinishedMatchesResults.js
+
 import React, { useEffect, useState } from 'react';
 import './FinishedMatchesResults.css';
 
 const FinishedMatchesResults = ({ leagueId }) => {
   const [fixtures, setFixtures] = useState([]);
-  const [rounds, setRounds] = useState([]); // Store available rounds
-  const [selectedRound, setSelectedRound] = useState(""); // Store selected round
+  const [rounds, setRounds] = useState([]); 
+  const [selectedRound, setSelectedRound] = useState(""); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [visibleMatches, setVisibleMatches] = useState(7); // Initially show 7 matches
+  const [visibleMatches, setVisibleMatches] = useState(7); 
 
   useEffect(() => {
     const fetchFinishedMatches = async () => {
@@ -17,12 +17,10 @@ const FinishedMatchesResults = ({ leagueId }) => {
         const data = await response.json();
 
         if (response.ok) {
-          // Filter matches that have the status "Finished"
           const finishedMatches = data.filter(fixture => fixture.fixture.status.short === "FT");
 
-          // Extract unique rounds from the fixtures
           const uniqueRounds = [...new Set(finishedMatches.map(fixture => fixture.league.round))];
-          setRounds(uniqueRounds); // Set the available rounds
+          setRounds(uniqueRounds);
 
           setFixtures(finishedMatches);
         } else {
@@ -39,14 +37,13 @@ const FinishedMatchesResults = ({ leagueId }) => {
     fetchFinishedMatches();
   }, [leagueId]);
 
-  // Filter fixtures by the selected round
   const filteredFixtures = selectedRound
     ? fixtures.filter(fixture => fixture.league.round === selectedRound)
     : fixtures;
 
-  // Function to load more matches
+
   const loadMoreMatches = () => {
-    setVisibleMatches((prev) => prev + 7); // Load 7 more matches
+    setVisibleMatches((prev) => prev + 7); 
   };
 
   if (loading) {
@@ -61,7 +58,7 @@ const FinishedMatchesResults = ({ leagueId }) => {
     <div className="finished-fixtures-container">
       <h3>Finished Matches</h3>
 
-      {/* Filter by round */}
+
       <div className="round-filter">
         <label htmlFor="round">Select Round: </label>
         <select
@@ -77,7 +74,7 @@ const FinishedMatchesResults = ({ leagueId }) => {
               </option>
             ))
           ) : (
-            <option value="Regular Season - 1">Regular Season - 1</option> // Default if only one round
+            <option value="Regular Season - 1">Regular Season - 1</option> 
           )}
         </select>
       </div>
@@ -105,7 +102,6 @@ const FinishedMatchesResults = ({ leagueId }) => {
               return (
                 <tr key={fixture.fixture.id}>
                   <td>
-                    {/* If status is "FT", display the date and time */}
                     {`${new Date(fixture.fixture.date).toLocaleDateString()} ${new Date(fixture.fixture.date).toLocaleTimeString()}`}
                   </td>
                   <td>
@@ -125,7 +121,6 @@ const FinishedMatchesResults = ({ leagueId }) => {
                     </div>
                   </td>
                   <td>
-                    {/* Display the score if the match is finished */}
                     {homeScore} - {awayScore}
                   </td>
                   <td>{fixture.fixture.venue.name}, {fixture.fixture.venue.city}</td>
@@ -136,7 +131,6 @@ const FinishedMatchesResults = ({ leagueId }) => {
         </table>
       )}
 
-      {/* Show "Load More" button if there are more matches to load */}
       {visibleMatches < filteredFixtures.length && (
         <button className="load-more-btn" onClick={loadMoreMatches}>
           Load More

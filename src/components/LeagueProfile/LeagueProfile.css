@@ -1,4 +1,3 @@
-/* src/components/LeagueProfile/LeagueProfile.css */
 .league-profile-container {
     display: flex;
     flex-direction: column;
@@ -13,8 +12,8 @@
   
   .league-profile-header {
     display: flex;
-    justify-content: space-between; /* Pushes the league name and country to opposite sides */
-    align-items: center; /* Aligns league info and country vertically */
+    justify-content: space-between; 
+    align-items: center;
     width: 100%;
     margin-bottom: 20px;
   }
@@ -22,11 +21,11 @@
   .league-info {
     display: flex;
     align-items: center;
-    flex-grow: 1; /* This ensures that the league info takes up available space */
+    flex-grow: 1; 
   }
   
   .league-profile-logo {
-    width: 100px; /* Adjust logo size */
+    width: 100px; 
     height: 100px;
     object-fit: contain;
     margin-right: 20px;

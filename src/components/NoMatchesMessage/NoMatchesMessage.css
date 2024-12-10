@@ -5,27 +5,27 @@
     justify-content: center;
     margin-top: 20px;
     text-align: center;
-    padding: 20px; /* Add padding for better spacing */
-    background-color: #f9f9f9; /* Light background for better visibility */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
   }
   
   .no-events-header {
-    font-size: 24px; /* Bold header size */
-    font-weight: 700; /* Make it bold */
-    color: #333; /* Darker color for emphasis */
-    margin-bottom: 10px; /* Spacing below the header */
+    font-size: 24px; 
+    font-weight: 700; 
+    color: #333; 
+    margin-bottom: 10px; 
   }
   
   .no-matches-image {
     width: 150px;
     height: auto;
-    margin-bottom: 15px; /* Adjust spacing */
+    margin-bottom: 15px; 
   }
   
   .no-matches-text {
-    font-size: 20px; /* Larger text size */
-    font-weight: 500; /* Slightly bold for readability */
-    color: #555; /* Neutral color */
+    font-size: 20px; 
+    font-weight: 500; 
+    color: #555; 
   }

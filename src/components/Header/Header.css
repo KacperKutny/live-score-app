@@ -1,55 +1,50 @@
-/* Header Styling */
 .header {
-  background-color: #4D8951; /* Green background color */
-  color: white; /* White text color */
+  background-color: #4D8951;
+  color: white;
   padding: 22px;
   display: flex;
-  align-items: center; /* Vertically center the content */
-  justify-content: space-between; /* Space between logo and search section */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Left Section (Main Logo) */
 .header-logo {
   margin-left: 300px;
-  width: 250px; /* Adjust the size of the main logo */
-  height: auto; /* Maintain aspect ratio */
-  cursor: pointer; /* Pointer cursor for the logo */
+  width: 250px;
+  height: auto;
+  cursor: pointer;
 }
 
-/* Right Section (Search Buttons) */
 .header-content {
   display: flex;
-  align-items: center; /* Vertically center search buttons */
-  gap: 1000px; /* Space between the logo and the search buttons */
+  align-items: center;
+  gap: 1000px;
 }
 
 .search-buttons {
   display: flex;
-  align-items: center; /* Vertically center the search buttons */
-  gap: 40px; /* Space between the search buttons themselves */
+  align-items: center;
+  gap: 40px;
 }
 
-/* Player Search Logo Styling */
 .search-logo {
-  width: 60px; /* Adjust size of search icon */
+  width: 60px;
   height: 60px;
-  cursor: pointer; /* Make the search logo clickable */
-  transition: transform 0.3s ease; /* Smooth hover transition */
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .search-logo:hover {
-  transform: scale(1.1); /* Slightly enlarge the image on hover */
+  transform: scale(1.1);
 }
 
-/* League Search Logo Styling */
 .league-search-logo2 {
-  width: 60px; /* Same size as player search logo */
+  width: 60px;
   height: 60px;
-  cursor: pointer; /* Make the league search logo clickable */
-  transition: transform 0.3s ease; /* Smooth hover transition */
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .league-search-logo2:hover {
-  transform: scale(1.1); /* Slightly enlarge the image on hover */
+  transform: scale(1.1);
 }

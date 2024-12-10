@@ -30,20 +30,18 @@ const MatchCard = ({
 
     useEffect(() => {
         let newMatchStatus = status;
-        let matchStatusClass = ''; // Default class
 
         if (status === "Not Started") {
-            newMatchStatus = `${formatMatchTime(date)}`; // Display scheduled start time
+            newMatchStatus = `${formatMatchTime(date)}`;
         } else if (status === "Match Finished") {
             newMatchStatus = "Finished";
         } else if (elapsed !== null && elapsed !== undefined && status !== "Match Finished") {
-            newMatchStatus = `${elapsed}'`; // Show elapsed minutes
-            matchStatusClass = 'live'; // Add class for live status
-            setIsLive(true); // Set match as live
+            newMatchStatus = `${elapsed}'`;
+            setIsLive(true);
         }
 
         console.log('Calculated newMatchStatus:', newMatchStatus);
-        setMatchStatus(newMatchStatus); // Update the matchStatus state
+        setMatchStatus(newMatchStatus);
     }, [status, elapsed, date]);
 
     const handleClick = () => {
@@ -77,7 +75,7 @@ const MatchCard = ({
             </div>
 
             <div className="match-status-row">
-                <div className={`match-status ${elapsed !== null && elapsed !== undefined && status !== "Match Finished" ? 'live' : ''}`}>
+                <div className={`match-status ${isLive ? 'live' : ''}`}>
                     <span>{matchStatus}</span>
                 </div>
             </div>

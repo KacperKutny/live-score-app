@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './Standings.css';
-import TopScorersTable from '../TopScorersTable/TopScorersTable'; // Import the TopScorersTable component
+import TopScorersTable from '../TopScorersTable/TopScorersTable'; 
 
 const Standings = ({ leagueId }) => {
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [standings, setStandings] = useState([]);
-  const [showTopScorers, setShowTopScorers] = useState(false); // State to toggle between tables
+  const [showTopScorers, setShowTopScorers] = useState(false); 
 
-  // Fetch available seasons
   useEffect(() => {
     const fetchSeasons = async () => {
       try {
         const response = await fetch(`https://localhost:7013/api/leagues/${leagueId}/seasons`);
         const data = await response.json();
         setSeasons(data.seasons);
-        setSelectedSeason(data.seasons[data.seasons.length - 1]); // Default to the latest season
+        setSelectedSeason(data.seasons[data.seasons.length - 1]); 
       } catch (error) {
         console.error('Error fetching seasons:', error);
       }
@@ -24,7 +23,7 @@ const Standings = ({ leagueId }) => {
     fetchSeasons();
   }, [leagueId]);
 
-  // Fetch standings data when season or leagueId changes
+
   useEffect(() => {
     if (selectedSeason) {
       const fetchStandings = async () => {
@@ -59,7 +58,6 @@ const Standings = ({ leagueId }) => {
     <div className="standings">
       <h2>Standings</h2>
 
-      {/* Season Filter */}
       <div>
         <label htmlFor="season">Select Season: </label>
         <select id="season" value={selectedSeason || ''} onChange={handleSeasonChange}>
@@ -75,7 +73,7 @@ const Standings = ({ leagueId }) => {
         {showTopScorers ? 'Show Standings' : 'Show Top Scorers'}
       </button>
 
-      {/* Conditional rendering based on showTopScorers state */}
+
       {showTopScorers ? (
         <TopScorersTable leagueId={leagueId} selectedSeason={selectedSeason} />
       ) : (

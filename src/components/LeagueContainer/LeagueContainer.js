@@ -13,13 +13,11 @@ const LeagueContainer = () => {
   const [noMatchesMessage, setNoMatchesMessage] = useState('');
   const [webSocket, setWebSocket] = useState(null);
 
-  // Handle date change for the date picker
   const handleDateChange = (date) => {
     const validDate = new Date(date);
     setSelectedDate(validDate);
   };
 
-  // Fetch data for leagues based on the selected date
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
@@ -50,7 +48,6 @@ const LeagueContainer = () => {
     }
   }, [selectedDate]);
 
-  // Handle live updates from WebSocket
   useEffect(() => {
     const handleLiveUpdate = (liveMatch) => {
       console.log("WebSocket Message received:", liveMatch);
@@ -58,16 +55,14 @@ const LeagueContainer = () => {
       if (liveMatch?.fixture?.status) {
         const matchId = liveMatch.fixture.id;
         const matchStatus = liveMatch.fixture.status.long;
-        const newElapsed = liveMatch.fixture.elapsedMinutes;  // Use `elapsedMinutes` instead of `elapsed`
-        const newGoals = liveMatch.goals; // Get the updated goals data
-  
-        // Check if elapsedMinutes exists
+        const newElapsed = liveMatch.fixture.elapsedMinutes;  
+        const newGoals = liveMatch.goals; 
+
         if (newElapsed === undefined || newElapsed === null) {
           console.warn(`Skipping update for match ${matchId}: Elapsed time is missing.`);
           return;
         }
   
-        // Update state with both new goals and elapsed minutes
         setLeagues((prevLeagues) => {
           return prevLeagues.map((league) => {
             const updatedMatches = league.matches.map((match) => {
@@ -81,7 +76,7 @@ const LeagueContainer = () => {
                     status: {
                       ...match.fixture.status,
                       long: matchStatus || match.fixture.status.long,
-                      elapsed: newElapsed,  // Update with `newElapsed`
+                      elapsed: newElapsed,  
                     },
                   },
                   goals: {
@@ -112,7 +107,6 @@ const LeagueContainer = () => {
   }, []);
   
 
-  // Fetch data when the selected date changes
   useEffect(() => {
     fetchData();
   }, [fetchData]);

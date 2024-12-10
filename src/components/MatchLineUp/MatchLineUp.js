@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './MatchLineUp.css'; // Import the CSS file for styling
+import './MatchLineUp.css'; 
 
 const MatchLineUp = ({ matchId }) => {
   const [lineupData, setLineupData] = useState(null);
@@ -16,7 +16,7 @@ const MatchLineUp = ({ matchId }) => {
   }
 
   const handlePlayerClick = (playerId) => {
-    // Open the player profile in a new tab
+   
     window.open(`/player/${playerId}`, '_blank');
   };
 
@@ -24,7 +24,7 @@ const MatchLineUp = ({ matchId }) => {
     <div className="matchlineup-container">
       <h2>Starting Lineups</h2>
       <div className="lineup-teams-container">
-        {/* Home Team */}
+        
         <div className="team-lineup home-team">
           <div className="team-header">
             <img src={lineupData[0].team.logo} alt="home team logo" className="team-logo" />
@@ -54,7 +54,7 @@ const MatchLineUp = ({ matchId }) => {
           </div>
         </div>
 
-        {/* Away Team */}
+    
         <div className="team-lineup away-team">
           <div className="team-header">
             <img src={lineupData[1].team.logo} alt="away team logo" className="team-logo" />

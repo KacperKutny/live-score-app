@@ -1,8 +1,8 @@
 .league-container {
-    margin: 0 auto; /* Center container */
+    margin: 0 auto; 
 
-    padding: 0 16px; /* Add padding to left and right */
-    max-width: 900px; /* Optional: Limit the width of the container */
+    padding: 0 16px; 
+    max-width: 900px; 
 }
 
 

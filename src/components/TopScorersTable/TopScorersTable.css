@@ -1,4 +1,3 @@
-/* General Table Styling */
 .top-scorers-table {
     width: 100%;
     border-collapse: collapse;
@@ -23,49 +22,44 @@
     background-color: #f1f1f1;
 }
 
-/* Player Photo Styling */
 .player-topscorers-photo {
-    width: 40px; /* Make the player photo smaller */
+    width: 40px;
     height: 40px;
     margin-right: 10px;
-    object-fit: cover; /* Ensures the photo fits well inside the circle */
+    object-fit: cover;
 }
 
-/* Team Logo Styling */
 .team-logo {
-    width: 25px; /* Adjust team logo size */
+    width: 25px;
     height: 25px;
     margin-right: 10px;
 }
 
-/* Styling for the table body text */
 .top-scorers-table td {
     font-size: 16px;
 }
 
-/* Styling for Player Name Link */
-.top-scorers-table .player-link {
-    text-decoration: none;  /* Remove underline */
-    color: black;           /* Set link color to black */
-    font-weight: bold;      /* Optional: Make the player name bold */
-    display: inline-flex;
-    align-items: center;    /* Center align the text with the image */
-}
-
-/* Ensuring the <a> tag from Link component is styled correctly */
 .top-scorers-table .player-link a {
-    text-decoration: none;  /* Remove underline */
-    color: black;           /* Set the color to black */
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
 }
 
-/* Hover effect for player name link */
-.top-scorers-table .player-link:hover {
-    color: black; /* Keep the text black on hover */
-    text-decoration: underline; /* Underline on hover */
-    transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for color and underline */
+.top-scorers-table .player-link a:hover {
+    text-decoration: underline;
+    color: black;
+    transition: text-decoration 0.3s ease;
 }
 
-/* Responsive Design for smaller screens */
+
+
+.top-scorers-table a {
+    color: black !important;
+    text-decoration: none !important;
+}
+
 @media (max-width: 768px) {
     .top-scorers-table th,
     .top-scorers-table td {
@@ -73,7 +67,7 @@
     }
 
     .player-topscorers-photo {
-        width: 35px; /* Smaller size for mobile */
+        width: 35px;
         height: 35px;
     }
 

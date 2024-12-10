@@ -96,24 +96,6 @@
 }
 
 
-@media (max-width: 768px) {
-  .recent-fixtures-table th,
-  .recent-fixtures-table td {
-    padding: 8px;
-  }
-
-  .recent-fixtures-team-logo {
-    width: 20px;
-    height: 20px;
-  }
-
-  .recent-fixtures-league-flag,
-  .recent-fixtures-league-logo {
-    width: 20px;
-    height: 20px;
-  }
-}
-
 .recent-fixtures-load-more-btn {
   display: block;
   margin: 20px auto; 

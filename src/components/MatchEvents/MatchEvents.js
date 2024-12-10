@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import MatchStatistics from '../MatchStatistics/MatchStatistics'; // Import the MatchStatistics component
+import MatchStatistics from '../MatchStatistics/MatchStatistics'; 
 import yellowCardIcon from '../../assets/yellow-card.png';
 import substituteIcon from '../../assets/substitute-icon.png';
 import goalScoredIcon from '../../assets/goal-scored.png';
@@ -39,7 +39,6 @@ const MatchEvents = ({ matchId, homeTeamId, awayTeamId }) => {
   }, [matchId]);
 
   const handlePlayerClick = (playerId) => {
-    // Open the player profile in a new tab
     window.open(`/player/${playerId}`, '_blank');
   };
 
@@ -105,7 +104,6 @@ const MatchEvents = ({ matchId, homeTeamId, awayTeamId }) => {
           ))}
         </div>
       )}
-      {/* MatchStatistics Component */}
       <MatchStatistics homeTeamId={homeTeamId} awayTeamId={awayTeamId} />
     </div>
   );

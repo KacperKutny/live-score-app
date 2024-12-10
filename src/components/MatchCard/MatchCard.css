@@ -11,13 +11,13 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 10px; /* Optional: Space between rows */
+  margin-bottom: 10px;
 }
 
 .team {
   display: flex;
-  width: 40%;  /* Make sure the team section takes full width */
-  align-items: center; /* Vertically align flag, name, and score */
+  width: 40%;
+  align-items: center;
 }
 
 .team-flag {
@@ -35,13 +35,12 @@
 .team-score {
   font-size: 18px;
   font-weight: bold;
-  margin-left: auto; /* Push the score to the right side */
+  margin-left: auto;
 }
 
-/* Add this new class for live scores */
 .team-score.live-score {
-  color: red; /* Change color to red for live games */
-  font-weight: bold; /* Optional: Make the score bold for live games */
+  color: red;
+  font-weight: bold;
 }
 
 .match-status-row {
@@ -54,10 +53,9 @@
 .match-status {
   font-size: 12px;
   font-weight: bold;
-  color: #333; /* Default color */
+  color: #333;
 }
 
-/* Style for live match status (red and bold) */
 .match-status.live {
   color: red;
   font-weight: bold;

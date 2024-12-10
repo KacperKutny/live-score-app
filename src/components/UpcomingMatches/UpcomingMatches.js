@@ -1,14 +1,13 @@
-// src/components/UpcomingMatches/UpcomingMatches.js
 import React, { useEffect, useState } from 'react';
 import './UpcomingMatches.css';
 
 const UpcomingMatches = ({ leagueId }) => {
   const [fixtures, setFixtures] = useState([]);
-  const [rounds, setRounds] = useState([]); // Store available rounds
-  const [selectedRound, setSelectedRound] = useState(""); // Store selected round
+  const [rounds, setRounds] = useState([]); 
+  const [selectedRound, setSelectedRound] = useState(""); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [visibleMatches, setVisibleMatches] = useState(7); // Initially show 7 matches
+  const [visibleMatches, setVisibleMatches] = useState(7); 
 
   useEffect(() => {
     const fetchUpcomingMatches = async () => {
@@ -17,14 +16,13 @@ const UpcomingMatches = ({ leagueId }) => {
         const data = await response.json();
 
         if (response.ok) {
-          // Filter matches that have the status "Not Started" (NS) or "To Be Determined" (TBD)
           const upcomingMatches = data.filter(fixture => 
             fixture.fixture.status.short === "NS" || fixture.fixture.status.short === "TBD"
           );
 
-          // Extract unique rounds from the fixtures
+          
           const uniqueRounds = [...new Set(upcomingMatches.map(fixture => fixture.league.round))];
-          setRounds(uniqueRounds); // Set the available rounds
+          setRounds(uniqueRounds); 
 
           setFixtures(upcomingMatches);
         } else {
@@ -41,14 +39,14 @@ const UpcomingMatches = ({ leagueId }) => {
     fetchUpcomingMatches();
   }, [leagueId]);
 
-  // Filter fixtures by the selected round
+
   const filteredFixtures = selectedRound
     ? fixtures.filter(fixture => fixture.league.round === selectedRound)
     : fixtures;
 
-  // Function to load more matches
+
   const loadMoreMatches = () => {
-    setVisibleMatches((prev) => prev + 7); // Load 7 more matches
+    setVisibleMatches((prev) => prev + 7); 
   };
 
   if (loading) {
@@ -63,7 +61,7 @@ const UpcomingMatches = ({ leagueId }) => {
     <div className="recent-fixtures-container">
       <h3>Upcoming Matches</h3>
 
-      {/* Filter by round */}
+      
       <div className="round-filter">
         <label htmlFor="round">Select Round: </label>
         <select
@@ -79,7 +77,7 @@ const UpcomingMatches = ({ leagueId }) => {
               </option>
             ))
           ) : (
-            <option value="Regular Season - 1">Regular Season - 1</option> // Default if only one round
+            <option value="Regular Season - 1">Regular Season - 1</option>
           )}
         </select>
       </div>
@@ -100,7 +98,6 @@ const UpcomingMatches = ({ leagueId }) => {
             {filteredFixtures.slice(0, visibleMatches).map((fixture) => (
               <tr key={fixture.fixture.id}>
                 <td>
-                  {/* If status is "TBD", display "TBD" instead of the actual date */}
                   {fixture.fixture.status.short === "TBD"
                     ? "TBD"
                     : new Date(fixture.fixture.date).toLocaleString()}
@@ -124,7 +121,6 @@ const UpcomingMatches = ({ leagueId }) => {
         </table>
       )}
 
-      {/* Show "Load More" button if there are more matches to load */}
       {visibleMatches < filteredFixtures.length && (
         <button className="load-more-btn" onClick={loadMoreMatches}>
           Load More

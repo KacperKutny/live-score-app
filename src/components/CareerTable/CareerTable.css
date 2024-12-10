@@ -1,11 +1,9 @@
-/* Basic reset for margins and padding */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Container for the table and filter */
 .career-table-container {
   width: 100%;
   max-width: 1200px;
@@ -16,7 +14,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Title styling */
 .career-table-container h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -24,7 +21,6 @@
   color: #333;
 }
 
-/* Filter Section */
 .filter-section {
   display: flex;
   justify-content: flex-start;
@@ -52,7 +48,6 @@
   border-color: #007bff;
 }
 
-/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -88,7 +83,6 @@ table td img {
   vertical-align: middle;
 }
 
-/* No Data Available */
 .no-data {
   text-align: center;
   font-size: 18px;
@@ -98,40 +92,13 @@ table td img {
   border-radius: 5px;
 }
 
-/* Responsive Design for smaller screens */
-@media (max-width: 768px) {
-  table th,
-  table td {
-    padding: 10px;
-    font-size: 14px;
-  }
 
-  .career-table-container {
-    padding: 10px;
-  }
-
-  .filter-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .filter-section label {
-    margin-bottom: 8px;
-  }
-
-  .filter-section select {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
-
-/* Styling the league link */
 a.league-link {
-  color: black; /* Make the link text black */
-  text-decoration: none; /* Remove underline */
+  color: black; 
+  text-decoration: none; 
 }
 
 a.league-link:hover {
-  text-decoration: underline; /* Underline on hover */
-  text-decoration-color: black; /* Black underline color */
+  text-decoration: underline; 
+  text-decoration-color: black; 
 }

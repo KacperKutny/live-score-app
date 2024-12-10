@@ -1,4 +1,4 @@
-/* src/components/PlayerProfile/PlayerProfile.css */
+
 .player-profile-container {
   display: flex;
   flex-direction: column;
@@ -13,8 +13,8 @@
 
 .player-profile-header {
   display: flex;
-  justify-content: space-between; /* Pushes the name and team to opposite sides */
-  align-items: center; /* Aligns player info and team vertically */
+  justify-content: space-between; 
+  align-items: center; 
   width: 100%;
   margin-bottom: 20px;
 }
@@ -22,7 +22,7 @@
 .player-info {
   display: flex;
   align-items: center;
-  flex-grow: 1; /* This ensures that the player info takes up available space */
+  flex-grow: 1; 
 }
 
 .player-photo {
@@ -58,7 +58,7 @@
   color: #252a30;
 }
 
-/* Team section on the right */
+
 .player-team {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './TopScorersTable.css'
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 const TopScorersTable = ({ leagueId, selectedSeason }) => {
   const [topScorers, setTopScorers] = useState([]);
@@ -59,7 +59,6 @@ const TopScorersTable = ({ leagueId, selectedSeason }) => {
                 <tr key={player.id}>
                   <td>{index + 1}</td>
                   <td>
-                    {/* Link to Player Profile Page with player id */}
                     <Link to={`/player/${player.id}`}>
                       <img src={player.photo} alt={player.name} className="player-topscorers-photo" />
                       {player.name}

@@ -1,6 +1,3 @@
-/* src/components/FinishedMatchesResults/FinishedMatchesResults.css */
-
-/* General Styling */
 .finished-fixtures-container {
     padding: 10px;
     max-width: 1200px;
@@ -60,7 +57,7 @@
     border-radius: 5px;
   }
   
-  /* Styling for match status and score */
+
   .match-status {
     font-weight: bold;
     color: #888;
@@ -77,16 +74,5 @@
     color: red;
   }
   
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .fixtures-table th,
-    .fixtures-table td {
-      padding: 8px;
-    }
-  
-    .team-logo {
-      width: 20px;
-      height: 20px;
-    }
-  }
+
   
