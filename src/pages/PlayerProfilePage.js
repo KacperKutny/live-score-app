@@ -25,26 +25,26 @@ const PlayerProfilePage = () => {
         setLoading(true);
         setError(null);
 
-        // Fetch basic player data
+       
         const playerResponse = await fetch(`https://localhost:7013/api/players/${playerId}`);
         if (!playerResponse.ok) throw new Error('Player not found');
         const playerData = await playerResponse.json();
 
-        // Fetch current team for player's profile
+        
         const teamResponse = await fetch(`https://localhost:7013/api/players/${playerId}/squads`);
         const teamData = teamResponse.ok ? await teamResponse.json() : [];
 
-        // Fetch statistics for all seasons
+        
         const statsResponse = await fetch(`https://localhost:7013/api/players/${playerId}/statistics`);
         if (!statsResponse.ok) throw new Error('Failed to load player statistics');
         const statsData = await statsResponse.json();
 
-        // Fetch teams for all seasons
+        
         const teamsResponse = await fetch(`https://localhost:7013/api/players/${playerId}/teams`);
         if (!teamsResponse.ok) throw new Error('Failed to load teams data');
         const teamsData = await teamsResponse.json();
 
-        // Fetch recent fixtures
+       
         const fixturesResponse = await fetch(
           `https://localhost:7013/api/players/${playerId}/biggest-season-fixtures`
         );
@@ -55,7 +55,7 @@ const PlayerProfilePage = () => {
           console.warn('No fixtures found.');
         }
 
-        // Fetch transfers
+        
         const transfersResponse = await fetch(`https://localhost:7013/api/transfers/${playerId}`);
         if (transfersResponse.ok) {
           const transfersData = await transfersResponse.json();

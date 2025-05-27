@@ -2,13 +2,13 @@ import { groupBy, map } from 'lodash';
 
 let webSocket = null;
 
-// Function to initialize WebSocket
+
 export const initializeWebSocket = (onMessageCallback) => {
   if (webSocket) {
-    return; // Avoid re-initializing WebSocket
+    return; 
   }
 
-  webSocket = new WebSocket('wss://localhost:7013/ws'); // Use the correct WebSocket endpoint
+  webSocket = new WebSocket('wss://localhost:7013/ws'); 
 
   webSocket.onopen = () => {
     console.log("WebSocket connection established.");
@@ -25,7 +25,7 @@ export const initializeWebSocket = (onMessageCallback) => {
   webSocket.onclose = () => {
     console.log("WebSocket connection closed. Reconnecting...");
     webSocket = null;
-    setTimeout(() => initializeWebSocket(onMessageCallback), 5000); // Retry connection
+    setTimeout(() => initializeWebSocket(onMessageCallback), 5000); 
   };
 
   webSocket.onerror = (error) => {
@@ -33,7 +33,7 @@ export const initializeWebSocket = (onMessageCallback) => {
   };
 };
 
-// Function to fetch leagues by date
+
 export const fetchLeaguesByDate = async (date) => {
   const formattedDate = new Date(date).toISOString().split('T')[0];
   const response = await fetch(`https://localhost:7013/api/fixtures?date=${formattedDate}`);

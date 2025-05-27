@@ -59,7 +59,7 @@ const LeagueContainer = () => {
         const newGoals = liveMatch.goals; 
 
         if (newElapsed === undefined || newElapsed === null) {
-          console.warn(`Skipping update for match ${matchId}: Elapsed time is missing.`);
+          //console.warn(`Skipping update for match ${matchId}: Elapsed time is missing.`);
           return;
         }
   
@@ -67,7 +67,7 @@ const LeagueContainer = () => {
           return prevLeagues.map((league) => {
             const updatedMatches = league.matches.map((match) => {
               if (match.fixture.id === matchId) {
-                console.log(`Updating match ${matchId}: Previous elapsed: ${match.fixture.status.elapsed}, New elapsed: ${newElapsed}`);
+               // console.log(`Updating match ${matchId}: Previous elapsed: ${match.fixture.status.elapsed}, New elapsed: ${newElapsed}`);
   
                 return {
                   ...match,
